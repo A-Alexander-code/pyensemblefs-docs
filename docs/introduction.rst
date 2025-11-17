@@ -24,7 +24,7 @@ Features at a glance
 Description
 -----------
 
-``pyensemblefs`` provides a unified and modular framework for ensemble feature selection.
+``pyensemblefs`` provides a unified and modular framework for EFS.
 Users can choose among statistical filters, model-based selectors, and custom ranking
 criteria, and combine their outputs through robust aggregation techniques. Stability measures
 offer insight into selection robustness under perturbations, while visualization utilities enable
