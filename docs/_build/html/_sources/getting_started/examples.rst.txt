@@ -1,0 +1,12 @@
+Examples
+========
+
+- **Aggregators**: Score/frequency/ranking combination.
+- **Stability**: Stability metrics between feature lists.
+- **Visualization**: Ranking and stability comparison.
+
+.. code-block:: python
+
+    from src.aggregators.score import MeanAggregator, SelectionFrequencyAggregator
+    from src.aggregators.rank import MeanRankAggregator
+    from src.aggregators.subset import TopKBinaryAggregator

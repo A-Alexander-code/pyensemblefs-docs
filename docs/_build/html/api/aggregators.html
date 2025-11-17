@@ -1,0 +1,624 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aggregators &mdash; pyensemblefs — Ensemble Feature Selection for Python</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Feature Selection Methods" href="fsmethods.html" />
+    <link rel="prev" title="Ensemble Components" href="ensemble.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            pyensemblefs
+              <img src="../_static/pyensamblefs_logo_v1.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#what-is-pyensemblefs">What is pyensemblefs?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#features-at-a-glance">Features at a glance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction.html#install-from-repository-development-mode">Install from repository (development mode)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction.html#optional-install-from-pypi">(Optional) Install from PyPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction.html#quick-check">Quick check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction.html#optional-dependencies">Optional dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#core-design-philosophy">Core Design Philosophy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction.html#modularity">Modularity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction.html#homogeneous-and-heterogeneous-ensembles">Homogeneous and Heterogeneous Ensembles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction.html#bootstrapping-as-a-first-class-citizen">Bootstrapping as a First-Class Citizen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction.html#separation-of-selection-aggregation-and-evaluation">Separation of Selection, Aggregation and Evaluation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quickstart.html">Quickstart</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/quickstart.html#minimal-example">Minimal example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/end_to_end.html">End-to-End Workflow: From Data to Stability and Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/end_to_end.html#step-1-load-a-dataset">Step 1 – Load a dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/end_to_end.html#step-2-bootstrap-resampling-feature-selection">Step 2 – Bootstrap resampling + feature selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/end_to_end.html#step-3-aggregate-selections-via-frequency">Step 3 – Aggregate selections via frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/end_to_end.html#step-4-compute-stability-metrics">Step 4 – Compute stability metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/end_to_end.html#step-5-visualize-selection-frequencies">Step 5 – Visualize selection frequencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/method_mapping.html">Method–Aggregator–Metric Mapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/method_mapping.html#selector-types">Selector Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/method_mapping.html#compatibility-table">Compatibility Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/method_mapping.html#practical-guidelines">Practical Guidelines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/ensemble_basics.html">Ensemble Feature Selection Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/ensemble_basics.html#topics">Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/ensemble_basics.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/bootstrap_pipeline.html">Bootstrapping Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/bootstrap_pipeline.html#contents">Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/bootstrap_pipeline.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/stability_analysis.html">Example: Computing Stability Across Bootstrap Replicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/visualization_tools.html">Visualization Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/visualization_tools.html#tools-covered">Tools covered</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/visualization_tools.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ &amp; Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html#general-usage">General Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq.html#why-do-i-get-different-selected-features-on-each-run">Why do I get different selected features on each run?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq.html#which-aggregation-method-should-i-choose">Which aggregation method should I choose?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html#stability-metrics">Stability Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq.html#why-does-nogueiras-stability-sometimes-become-negative">Why does Nogueira’s stability sometimes become negative?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq.html#which-metrics-should-i-use-for-subset-vs-ranking-outputs">Which metrics should I use for subset vs ranking outputs?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq.html#why-do-some-metrics-return-nan">Why do some metrics return NaN?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html#practical-issues">Practical Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq.html#importerror-no-module-named-sklearn-pandas-or-matplotlib">ImportError: no module named ‘sklearn’, ‘pandas’ or ‘matplotlib’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq.html#stabilityevaluator-raises-an-error-about-input-shape">StabilityEvaluator raises an error about input shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq.html#how-can-i-speed-up-my-ensemble">How can I speed up my ensemble?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#core-ensemble-modules">Core Ensemble Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html">Ensemble Components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ensemble.html#the-ensemble-pipeline">The ensemble pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ensemble.html#homogeneous-vs-heterogeneous-ensembles">Homogeneous vs heterogeneous ensembles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ensemble.html#modules">Modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ensemble.html#base-ensemble-component">Base Ensemble Component</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ensemble.html#bootstrapper-homogeneous">Bootstrapper (homogeneous)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ensemble.html#metabootstrapper-heterogeneous">MetaBootstrapper (heterogeneous)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ensemble.html#ensemblefeatureselector">EnsembleFeatureSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ensemble.html#minimal-example">Minimal example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#aggregation-methods">Aggregation Methods</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Aggregators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aggregator-families">Aggregator families</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-classes">Core classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#available-abc-rules-in-pyensemblefs">Available ABC rules in pyensemblefs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-abcvoteaggregator">Using ABCVoteAggregator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-reference">Module reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature-selection-methods-fs-methods">Feature Selection Methods (FS Methods)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fsmethods.html">Feature Selection Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#classification-of-methods">Classification of Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#subset-methods">Subset Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#ranking-methods">Ranking Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#score-based-methods">Score-Based Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#stability-metrics">Stability Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="stability.html">Stability Metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#high-level-interface-stabilityevaluator">1. High-level interface: StabilityEvaluator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-core-metrics">2. Mathematical definitions (12 core metrics)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#frequency-based-stability-scores">3. Frequency-based stability scores</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">4. Similarity matrices and expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-intersection-based-measures">5. Adjusted intersection-based measures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#other-adjusted-measures-yu-zucknick-sechidis">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#estimators-evaluators">Estimators &amp; Evaluators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="estimators.html">Estimators and Evaluation Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="estimators.html#training-utilities">Training Utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimators.html#evaluation-metrics">Evaluation Metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimators.html#example-usage">Example Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimators.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#utility-modules">Utility Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#dataset-utilities">Dataset Utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#saving-results">Saving Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#plotting-helpers">Plotting Helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#global-constants">Global Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#visualization-tools">Visualization Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="viz.html">Visualization Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="viz.html#high-level-interface-visualizer">High-Level Interface (Visualizer)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="viz.html#ranking-visualizations">Ranking Visualizations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="viz.html#stability-visualizations">Stability Visualizations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="viz.html#aggregator-comparison-plots">Aggregator Comparison Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="viz.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyensemblefs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API Reference</a></li>
+      <li class="breadcrumb-item active">Aggregators</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/aggregators.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="aggregators">
+<h1>Aggregators<a class="headerlink" href="#aggregators" title="Link to this heading"></a></h1>
+<p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators</span></code> subpackage implements multiple families of
+aggregation methods that operate on bootstrap outputs (scores, ranks, or
+binary supports). These correspond to the score-based, rank-based, subset-based
+and approval-based (ABC) rules described in the paper.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>All aggregators follow a common contract defined in
+<code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.base.BaseAggregator</span></code>:</p>
+<ul class="simple">
+<li><p>Input is a 2D array <code class="docutils literal notranslate"><span class="pre">results</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(n_bootstraps,</span> <span class="pre">n_features)</span></code>.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">aggregate()</span></code> returns a 1D vector of length <code class="docutils literal notranslate"><span class="pre">n_features</span></code> (scores, ranks
+or a binary mask, depending on the subclass).</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit()</span></code> computes an internal ranking and a selection mask based on
+<code class="docutils literal notranslate"><span class="pre">top_k</span></code> and the aggregated values.</p></li>
+</ul>
+</section>
+<section id="aggregator-families">
+<h2>Aggregator families<a class="headerlink" href="#aggregator-families" title="Link to this heading"></a></h2>
+<section id="score-based-aggregators">
+<h3>Score-based aggregators<a class="headerlink" href="#score-based-aggregators" title="Link to this heading"></a></h3>
+<p>Defined in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score</span></code>, they treat <strong>higher values
+as better</strong> and work directly on real-valued matrices of scores
+(e.g., feature importances or relevance scores per bootstrap):</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.MeanAggregator</span></code>
+Arithmetic mean of scores across bootstraps.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.SumAggregator</span></code>
+Sum of scores across bootstraps.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.MedianAggregator</span></code>
+Median of scores (robust to outliers).</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.TrimmedMeanAggregator</span></code>
+Alpha-trimmed mean, removing a fraction of lowest and highest scores.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.WinsorizedMeanAggregator</span></code>
+Winsorized mean, clipping extremes to alpha-quantiles.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.GeometricMeanAggregator</span></code>
+Geometric mean, emphasizing consistently high scores.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.RankProductAggregator</span></code>
+Rank-product style aggregation on scores (log-domain), returning
+<code class="docutils literal notranslate"><span class="pre">-log-product</span></code> so that higher values indicate more stable high scores.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.WeightedScoreAggregator</span></code>
+Weighted average of scores across bootstraps, using user-provided weights.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.BordaFromScoresAggregator</span></code>
+Converts per-bootstrap scores to ranks and applies Borda count, summing
+Borda points across bootstraps.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.SelectionFrequencyAggregator</span></code>
+Converts binary supports into selection frequencies in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>; useful
+when base selectors return subsets instead of scores.</p></li>
+</ul>
+<p>These aggregators directly implement the <strong>score-based pooling</strong> and
+<strong>selection-frequency</strong> strategies summarized in the Aggregation Methods
+section of the paper.</p>
+</section>
+<section id="rank-based-aggregators">
+<h3>Rank-based aggregators<a class="headerlink" href="#rank-based-aggregators" title="Link to this heading"></a></h3>
+<p>Defined in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank</span></code>, they operate on score
+matrices but internally convert them to <strong>ranks per bootstrap</strong> (1 = best)
+and then combine these ranks. They inherit from
+<code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.base.RankAggregator</span></code>, where <strong>lower values
+are better</strong>:</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.MeanRankAggregator</span></code>
+Mean rank across bootstraps.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.MedianRankAggregator</span></code>
+Median rank across bootstraps.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.ConsensusRankAggregator</span></code>
+Conceptually equivalent to mean rank, kept for semantic clarity.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.BordaFromRanksAggregator</span></code>
+Borda fusion from rank input; if the input does not look like proper
+ranks, it is automatically converted from scores.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator</span></code>
+Alpha-trimmed mean of ranks, discarding extreme ranks before averaging.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator</span></code>
+Winsorized mean of ranks, clipping extreme ranks to alpha-quantiles.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.GeometricMeanRankAggregator</span></code>
+Geometric mean of ranks, emphasizing consistently high positions.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.RankProductAggregator</span></code>
+Rank-product aggregation (log-domain), where lower values correspond to
+features consistently near the top.</p></li>
+</ul>
+<p>These correspond to the <strong>rank-based consensus</strong> family discussed in the
+paper.</p>
+</section>
+<section id="subset-based-voting-aggregators">
+<h3>Subset-based (voting) aggregators<a class="headerlink" href="#subset-based-voting-aggregators" title="Link to this heading"></a></h3>
+<p>Defined in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset</span></code>, they assume that the
+bootstrap outputs are <strong>binary supports</strong> (0/1), and aggregate them using
+frequency and voting rules. They inherit from
+<code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.base.BinaryAggregator</span></code> and ultimately
+produce a binary mask of selected features:</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.MajorityVoteAggregator</span></code>
+Uses selection frequencies and applies a majority threshold (e.g. 0.5);
+optionally enforces a maximum <code class="docutils literal notranslate"><span class="pre">top_k</span></code> by keeping the most frequent
+features.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.TopKBinaryAggregator</span></code>
+Selects exactly <code class="docutils literal notranslate"><span class="pre">top_k</span></code> features with highest selection frequency.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.ThresholdAggregator</span></code>
+Selects all features whose frequency is above a fixed threshold τ.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.QuantileThresholdAggregator</span></code>
+Selects features whose selection frequency is above a given quantile.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator</span></code>
+Weighted voting over bootstrap supports; each bootstrap can have a
+different weight.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator</span></code>
+Uses a binomial model and Benjamini–Hochberg FDR control to select
+features with statistically significant selection frequency.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator</span></code>
+Uses Clopper–Pearson confidence intervals on selection frequency to
+retain features whose lower CI bound exceeds a threshold.</p></li>
+</ul>
+<p>These classes implement the <strong>subset-based voting</strong> and <strong>FDR/CI-based</strong>
+frequency rules described in the Aggregation Methods section of the paper.</p>
+</section>
+<section id="approval-based-abc-voting-aggregators">
+<h3>Approval-based (ABC) voting aggregators<a class="headerlink" href="#approval-based-abc-voting-aggregators" title="Link to this heading"></a></h3>
+<p>The module <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.abcvote</span></code> connects ensemble feature
+selection with <strong>approval-based multi-winner voting</strong> via the
+<a class="reference external" href="https://pypi.org/project/abcvoting/">abcvoting</a> library.</p>
+<p>In this setting:</p>
+<ul class="simple">
+<li><p>Each <strong>bootstrap</strong> (or selector run) is interpreted as a <em>voter</em>.</p></li>
+<li><p>Each <strong>feature</strong> is interpreted as a <em>candidate</em>.</p></li>
+<li><p>A bootstrap’s <strong>selected features</strong> form that voter’s <em>approval set</em>.</p></li>
+<li><p>An approval-based voting rule selects a <em>committee</em> of size <code class="docutils literal notranslate"><span class="pre">top_k</span></code>,
+interpreted as the consensus feature subset.</p></li>
+</ul>
+</section>
+</section>
+<section id="core-classes">
+<h2>Core classes<a class="headerlink" href="#core-classes" title="Link to this heading"></a></h2>
+<ul>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.abcvote._ABCBase</span></code>
+Internal base class for ABC voting aggregators. It:</p>
+<ul class="simple">
+<li><p>Checks that input <code class="docutils literal notranslate"><span class="pre">results</span></code> is a binary matrix of shape
+<code class="docutils literal notranslate"><span class="pre">(n_bootstraps,</span> <span class="pre">n_features)</span></code>.</p></li>
+<li><p>Builds an <code class="xref py py-class docutils literal notranslate"><span class="pre">abcvoting.preferences.Profile</span></code> where each row’s
+approved features become the voter’s approval set.</p></li>
+<li><p>Defines common scoring modes (<code class="docutils literal notranslate"><span class="pre">&quot;av&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;sav&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;slav&quot;</span></code>) used
+by ABC-based aggregators.</p></li>
+</ul>
+</li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.abcvote.ABCVotingRule</span></code>
+Generic wrapper around a single <cite>abcvoting</cite> rule. It:</p>
+<ul class="simple">
+<li><p>Receives a <code class="docutils literal notranslate"><span class="pre">compute_func</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">compute_seqpav</span></code>, <code class="docutils literal notranslate"><span class="pre">compute_cc</span></code>).</p></li>
+<li><p>Chooses a <strong>safe algorithm</strong> using <code class="xref py py-func docutils literal notranslate"><span class="pre">_pick_safe_algorithm()</span></code>, avoiding
+Gurobi-based algorithms.</p></li>
+<li><p>Computes a winning committee of size <code class="docutils literal notranslate"><span class="pre">top_k</span></code>.</p></li>
+<li><p>Returns <strong>feature scores</strong> based on <code class="docutils literal notranslate"><span class="pre">score_mode</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">score_mode=&quot;av&quot;</span></code> → sum of approvals (Approval Voting-like).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score_mode=&quot;sav&quot;</span></code> → Satisfaction Approval Voting–style normalization:
+each voter distributes weight equally among approved features.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score_mode=&quot;slav&quot;</span></code> → same as <code class="docutils literal notranslate"><span class="pre">&quot;sav&quot;</span></code> (Shapley-like satisfaction).</p></li>
+</ul>
+</li>
+<li><p>Stores:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">self._committee_</span></code> → set of selected feature indices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.selected_features_</span></code> → binary mask of the winning committee.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.final_ranking_</span></code> → indices sorted by decreasing score.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.abcvote.ABCVoteAggregator</span></code>
+High-level adapter that conforms to a simple interface:</p>
+<ul>
+<li><p>Accepts <code class="docutils literal notranslate"><span class="pre">boot_results</span></code> as:</p>
+<ul class="simple">
+<li><p>an iterable of <strong>subsets</strong> (feature indices or names), or</p></li>
+<li><p>an iterable of <strong>1D binary masks</strong> of length <code class="docutils literal notranslate"><span class="pre">n_features</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Converts them into a binary matrix <code class="docutils literal notranslate"><span class="pre">R</span></code> using <code class="docutils literal notranslate"><span class="pre">_to_binary_matrix</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">top_k</span></code> is not provided, infers a reasonable <strong>committee size</strong> as
+the median number of approvals per bootstrap.</p></li>
+<li><p>Builds an <code class="xref py py-class docutils literal notranslate"><span class="pre">ABCVotingRule</span></code> via <code class="xref py py-func docutils literal notranslate"><span class="pre">make_abcvoter()</span></code>.</p></li>
+<li><p>Returns a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> with columns</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;feature&quot;</span></code> – feature name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;score&quot;</span></code> – ABC-derived score (AV/SAV/SLAV-like)</p></li>
+</ul>
+<p>sorted in descending score order.</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="available-abc-rules-in-pyensemblefs">
+<h2>Available ABC rules in pyensemblefs<a class="headerlink" href="#available-abc-rules-in-pyensemblefs" title="Link to this heading"></a></h2>
+<p>The catalogue of supported ABC rules is defined in
+<code class="xref py py-data docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.abcvote.SAFE_RULES</span></code>.
+Each entry specifies:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rule_id</span></code> – identifier understood by <code class="xref py py-class docutils literal notranslate"><span class="pre">abcvoting.abcrules.Rule</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">func</span></code> – the computing function from <code class="xref py py-mod docutils literal notranslate"><span class="pre">abcvoting.abcrules</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code> – scoring mode (<code class="docutils literal notranslate"><span class="pre">&quot;av&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;sav&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;slav&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prefer</span></code> – preferred algorithms (avoiding Gurobi)</p></li>
+</ul>
+<p>The following rules are currently exposed:</p>
+<ul class="simple">
+<li><p><strong>Approval Voting family</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;av&quot;</span></code>
+Uses <code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_av()</span></code>, scoring with raw approval
+counts (<code class="docutils literal notranslate"><span class="pre">score=&quot;av&quot;</span></code>). Equivalent to selecting features that maximize
+total approvals.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;sav&quot;</span></code>
+Uses <code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_sav()</span></code>, scoring with satisfaction
+approval voting (<code class="docutils literal notranslate"><span class="pre">score=&quot;sav&quot;</span></code>), where each voter splits unit weight
+among approved features.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;slav&quot;</span></code>
+Uses <code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_slav()</span></code>, with <code class="docutils literal notranslate"><span class="pre">score=&quot;slav&quot;</span></code>.
+Internally uses the same scoring implementation as SAV in this wrapper.</p></li>
+</ul>
+</li>
+<li><p><strong>Sequential proportional rules</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;seqpav&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_seqpav()</span></code>, sequential PAV-like rule with
+SAV-style scoring (<code class="docutils literal notranslate"><span class="pre">score=&quot;sav&quot;</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;seqslav&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_seqslav()</span></code>, sequential SLAV variant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;seqphragmen&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_seqphragmen()</span></code>, sequential Phragmén rule
+with <code class="docutils literal notranslate"><span class="pre">score=&quot;sav&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;seqcc&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_seqcc()</span></code>, sequential Chamberlin–Courant
+with SAV scoring (<code class="docutils literal notranslate"><span class="pre">score=&quot;sav&quot;</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;revseqpav&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_revseqpav()</span></code>, reverse sequential PAV.</p></li>
+</ul>
+</li>
+<li><p><strong>Phragmén-type and resource-sharing rules</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;phragmen_enestroem&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_phragmen_enestroem()</span></code>, Phragmén–Eneström
+rule, scored via SAV (<code class="docutils literal notranslate"><span class="pre">score=&quot;sav&quot;</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;equal_shares&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_equal_shares()</span></code>, Equal Shares rule with
+fractional scoring (<code class="docutils literal notranslate"><span class="pre">score=&quot;sav&quot;</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;minimaxphragmen&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_minimaxphragmen()</span></code>, minimax Phragmén rule
+with SAV scoring.</p></li>
+</ul>
+</li>
+<li><p><strong>Proportional and fairness-oriented rules</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;rule_x&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_rule_x()</span></code>, a proportional justified
+representation–oriented rule (SAV-based scoring).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;maximin_support&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_maximin_support()</span></code>, maximin support rule
+focusing on fair representation with SAV scoring.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;eph&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_eph()</span></code>, an egalitarian proportional heuristic
+with SAV scoring.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;rsd&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_rsd()</span></code>, Random Serial Dictatorship-based
+rule with AV-style scoring (<code class="docutils literal notranslate"><span class="pre">score=&quot;av&quot;</span></code>).</p></li>
+</ul>
+</li>
+<li><p><strong>Classical multi-winner rules</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;pav&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_pav()</span></code>, Proportional Approval Voting
+using SAV scoring (<code class="docutils literal notranslate"><span class="pre">score=&quot;sav&quot;</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;cc&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_cc()</span></code>, Chamberlin–Courant rule, again
+with SAV-style scoring.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;monroe&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_monroe()</span></code>, Monroe’s rule with SAV scoring.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;greedy_monroe&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_greedy_monroe()</span></code>, a greedy approximation
+of Monroe (SAV-based scoring).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;lexcc&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_lexcc()</span></code>, lexicographic Chamberlin–Courant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;lexminimaxav&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_lexminimaxav()</span></code>, lexicographic minimax AV
+rule, with AV-style scoring (<code class="docutils literal notranslate"><span class="pre">score=&quot;av&quot;</span></code>).</p></li>
+</ul>
+</li>
+<li><p><strong>Consensus-oriented rules</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;consensus_rule&quot;</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">abcvoting.abcrules.compute_consensus_rule()</span></code>, a consensus-based rule
+that works with AV-style scoring.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="using-abcvoteaggregator">
+<h2>Using ABCVoteAggregator<a class="headerlink" href="#using-abcvoteaggregator" title="Link to this heading"></a></h2>
+<p>A typical workflow is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.aggregators.abcvote</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABCVoteAggregator</span>
+
+<span class="c1"># boot_results: list of subsets (indices or names) or binary masks</span>
+<span class="n">boot_results</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span> <span class="s2">&quot;f2&quot;</span><span class="p">,</span> <span class="s2">&quot;f5&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span> <span class="s2">&quot;f3&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;f2&quot;</span><span class="p">,</span> <span class="s2">&quot;f5&quot;</span><span class="p">,</span> <span class="s2">&quot;f7&quot;</span><span class="p">},</span>
+    <span class="c1"># ...</span>
+<span class="p">]</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span> <span class="s2">&quot;f2&quot;</span><span class="p">,</span> <span class="s2">&quot;f3&quot;</span><span class="p">,</span> <span class="s2">&quot;f4&quot;</span><span class="p">,</span> <span class="s2">&quot;f5&quot;</span><span class="p">,</span> <span class="s2">&quot;f6&quot;</span><span class="p">,</span> <span class="s2">&quot;f7&quot;</span><span class="p">]</span>
+
+<span class="n">agg</span> <span class="o">=</span> <span class="n">ABCVoteAggregator</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;seqpav&quot;</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">agg</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">boot_results</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_names</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>This yields a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> with features ranked by an
+approval-based voting rule, giving a consensus view of which features are
+most strongly supported across bootstraps and base selectors.</p>
+</section>
+<section id="module-reference">
+<h2>Module reference<a class="headerlink" href="#module-reference" title="Link to this heading"></a></h2>
+<section id="base-classes">
+<h3>Base classes<a class="headerlink" href="#base-classes" title="Link to this heading"></a></h3>
+</section>
+<section id="id1">
+<h3>Score-based aggregators<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+</section>
+<section id="id2">
+<h3>Rank-based aggregators<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+</section>
+<section id="subset-voting-aggregators">
+<h3>Subset / voting aggregators<a class="headerlink" href="#subset-voting-aggregators" title="Link to this heading"></a></h3>
+</section>
+<section id="approval-based-voting-abc">
+<h3>Approval-based voting (ABC)<a class="headerlink" href="#approval-based-voting-abc" title="Link to this heading"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ensemble.html" class="btn btn-neutral float-left" title="Ensemble Components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fsmethods.html" class="btn btn-neutral float-right" title="Feature Selection Methods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ &amp; Troubleshooting &mdash; pyensemblefs — Ensemble Feature Selection for Python</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api/index.html" />
+    <link rel="prev" title="Visualization Tools" href="tutorials/visualization_tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pyensemblefs
+              <img src="_static/pyensamblefs_logo_v1.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#what-is-pyensemblefs">What is pyensemblefs?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#features-at-a-glance">Features at a glance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#install-from-repository-development-mode">Install from repository (development mode)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#optional-install-from-pypi">(Optional) Install from PyPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#quick-check">Quick check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#optional-dependencies">Optional dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#core-design-philosophy">Core Design Philosophy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#modularity">Modularity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#homogeneous-and-heterogeneous-ensembles">Homogeneous and Heterogeneous Ensembles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#bootstrapping-as-a-first-class-citizen">Bootstrapping as a First-Class Citizen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#separation-of-selection-aggregation-and-evaluation">Separation of Selection, Aggregation and Evaluation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/quickstart.html">Quickstart</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/quickstart.html#minimal-example">Minimal example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/end_to_end.html">End-to-End Workflow: From Data to Stability and Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/end_to_end.html#step-1-load-a-dataset">Step 1 – Load a dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/end_to_end.html#step-2-bootstrap-resampling-feature-selection">Step 2 – Bootstrap resampling + feature selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/end_to_end.html#step-3-aggregate-selections-via-frequency">Step 3 – Aggregate selections via frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/end_to_end.html#step-4-compute-stability-metrics">Step 4 – Compute stability metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/end_to_end.html#step-5-visualize-selection-frequencies">Step 5 – Visualize selection frequencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/method_mapping.html">Method–Aggregator–Metric Mapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/method_mapping.html#selector-types">Selector Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/method_mapping.html#compatibility-table">Compatibility Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/method_mapping.html#practical-guidelines">Practical Guidelines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/ensemble_basics.html">Ensemble Feature Selection Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/ensemble_basics.html#topics">Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/ensemble_basics.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/bootstrap_pipeline.html">Bootstrapping Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/bootstrap_pipeline.html#contents">Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/bootstrap_pipeline.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/stability_analysis.html">Example: Computing Stability Across Bootstrap Replicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/visualization_tools.html">Visualization Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/visualization_tools.html#tools-covered">Tools covered</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/visualization_tools.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FAQ &amp; Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-usage">General Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-do-i-get-different-selected-features-on-each-run">Why do I get different selected features on each run?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#which-aggregation-method-should-i-choose">Which aggregation method should I choose?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#stability-metrics">Stability Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-does-nogueiras-stability-sometimes-become-negative">Why does Nogueira’s stability sometimes become negative?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#which-metrics-should-i-use-for-subset-vs-ranking-outputs">Which metrics should I use for subset vs ranking outputs?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-do-some-metrics-return-nan">Why do some metrics return NaN?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#practical-issues">Practical Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#importerror-no-module-named-sklearn-pandas-or-matplotlib">ImportError: no module named ‘sklearn’, ‘pandas’ or ‘matplotlib’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stabilityevaluator-raises-an-error-about-input-shape">StabilityEvaluator raises an error about input shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-can-i-speed-up-my-ensemble">How can I speed up my ensemble?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#core-ensemble-modules">Core Ensemble Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/ensemble.html">Ensemble Components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/ensemble.html#the-ensemble-pipeline">The ensemble pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/ensemble.html#homogeneous-vs-heterogeneous-ensembles">Homogeneous vs heterogeneous ensembles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/ensemble.html#modules">Modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/ensemble.html#base-ensemble-component">Base Ensemble Component</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/ensemble.html#bootstrapper-homogeneous">Bootstrapper (homogeneous)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/ensemble.html#metabootstrapper-heterogeneous">MetaBootstrapper (heterogeneous)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/ensemble.html#ensemblefeatureselector">EnsembleFeatureSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/ensemble.html#minimal-example">Minimal example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#aggregation-methods">Aggregation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/aggregators.html">Aggregators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/aggregators.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/aggregators.html#aggregator-families">Aggregator families</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/aggregators.html#core-classes">Core classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/aggregators.html#available-abc-rules-in-pyensemblefs">Available ABC rules in pyensemblefs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/aggregators.html#using-abcvoteaggregator">Using ABCVoteAggregator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/aggregators.html#module-reference">Module reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#feature-selection-methods-fs-methods">Feature Selection Methods (FS Methods)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/fsmethods.html">Feature Selection Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/fsmethods.html#classification-of-methods">Classification of Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/fsmethods.html#subset-methods">Subset Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/fsmethods.html#ranking-methods">Ranking Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/fsmethods.html#score-based-methods">Score-Based Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/fsmethods.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#stability-metrics">Stability Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/stability.html">Stability Metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/stability.html#high-level-interface-stabilityevaluator">1. High-level interface: StabilityEvaluator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/stability.html#mathematical-definitions-12-core-metrics">2. Mathematical definitions (12 core metrics)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/stability.html#frequency-based-stability-scores">3. Frequency-based stability scores</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/stability.html#similarity-matrices-and-expectations">4. Similarity matrices and expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/stability.html#adjusted-intersection-based-measures">5. Adjusted intersection-based measures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/stability.html#other-adjusted-measures-yu-zucknick-sechidis">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/stability.html#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#estimators-evaluators">Estimators &amp; Evaluators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/estimators.html">Estimators and Evaluation Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/estimators.html#training-utilities">Training Utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/estimators.html#evaluation-metrics">Evaluation Metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/estimators.html#example-usage">Example Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/estimators.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#utility-modules">Utility Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/utils.html">Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/utils.html#dataset-utilities">Dataset Utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/utils.html#saving-results">Saving Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/utils.html#plotting-helpers">Plotting Helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/utils.html#global-constants">Global Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/utils.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/utils.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#visualization-tools">Visualization Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/viz.html">Visualization Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/viz.html#high-level-interface-visualizer">High-Level Interface (Visualizer)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/viz.html#ranking-visualizations">Ranking Visualizations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/viz.html#stability-visualizations">Stability Visualizations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/viz.html#aggregator-comparison-plots">Aggregator Comparison Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/viz.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyensemblefs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FAQ &amp; Troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/faq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="faq-troubleshooting">
+<h1>FAQ &amp; Troubleshooting<a class="headerlink" href="#faq-troubleshooting" title="Link to this heading"></a></h1>
+<p>This page collects frequently asked questions and common issues
+when using <code class="docutils literal notranslate"><span class="pre">pyensemblefs</span></code>.</p>
+<section id="general-usage">
+<h2>General Usage<a class="headerlink" href="#general-usage" title="Link to this heading"></a></h2>
+<section id="why-do-i-get-different-selected-features-on-each-run">
+<h3>Why do I get different selected features on each run?<a class="headerlink" href="#why-do-i-get-different-selected-features-on-each-run" title="Link to this heading"></a></h3>
+<p>Ensemble feature selection in <code class="docutils literal notranslate"><span class="pre">pyensemblefs</span></code> typically relies on
+bootstrapping and/or stochastic base selectors (e.g., random forests).
+Small perturbations in the data or random seeds can produce slightly
+different selected subsets.</p>
+<p>To improve reproducibility:</p>
+<ul class="simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">random_state</span></code> for selectors and bootstrapping procedures.</p></li>
+<li><p>Increase the number of bootstraps <code class="docutils literal notranslate"><span class="pre">B</span></code> to stabilize results.</p></li>
+<li><p>Use stability metrics (e.g. Nogueira, Jaccard) to <em>quantify</em> variability
+instead of assuming selections should be identical.</p></li>
+</ul>
+</section>
+<section id="which-aggregation-method-should-i-choose">
+<h3>Which aggregation method should I choose?<a class="headerlink" href="#which-aggregation-method-should-i-choose" title="Link to this heading"></a></h3>
+<p>A rough guideline:</p>
+<ul class="simple">
+<li><p>If your selectors output <strong>binary subsets</strong> (0/1 masks):</p>
+<ul>
+<li><p>Start with frequency-based aggregators (e.g., selection frequency +
+threshold or top-k).</p></li>
+<li><p>For stricter consensus, consider voting or ABC-based rules.</p></li>
+</ul>
+</li>
+<li><p>If your selectors output <strong>scores or importances</strong>:</p>
+<ul>
+<li><p>Use score-based aggregators (mean, median, Borda-from-scores).</p></li>
+<li><p>Convert scores to ranks when comparing across heterogeneous methods.</p></li>
+</ul>
+</li>
+<li><p>If your base methods produce <strong>rankings</strong>:</p>
+<ul>
+<li><p>Use rank-based fusion (mean rank, Borda-from-ranks).</p></li>
+<li><p>Consider ranking-aware stability metrics (Yu, Zucknick).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="stability-metrics">
+<h2>Stability Metrics<a class="headerlink" href="#stability-metrics" title="Link to this heading"></a></h2>
+<section id="why-does-nogueiras-stability-sometimes-become-negative">
+<h3>Why does Nogueira’s stability sometimes become negative?<a class="headerlink" href="#why-does-nogueiras-stability-sometimes-become-negative" title="Link to this heading"></a></h3>
+<p>The Nogueira index is a <em>chance-corrected</em> stability measure.
+A negative value indicates that the observed agreement between feature
+subsets is worse than what would be expected by random selection under
+the same average subset size.</p>
+<p>If this happens:</p>
+<ul class="simple">
+<li><p>Check whether the base selectors are overly unstable or too small/large
+subsets are being forced.</p></li>
+<li><p>Increase the number of bootstraps.</p></li>
+<li><p>Consider simplifying the ensemble configuration or using more regularized
+selectors.</p></li>
+</ul>
+</section>
+<section id="which-metrics-should-i-use-for-subset-vs-ranking-outputs">
+<h3>Which metrics should I use for subset vs ranking outputs?<a class="headerlink" href="#which-metrics-should-i-use-for-subset-vs-ranking-outputs" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>For <strong>subset-based outputs</strong> (0/1 masks):</p>
+<ul>
+<li><p>Jaccard, Dice, Ochiai, Hamming, Nogueira, Kappa, Lustgarten, Phi.</p></li>
+</ul>
+</li>
+<li><p>For <strong>ranking-based outputs</strong>:</p>
+<ul>
+<li><p>Yu and Zucknick (optionally with a given top-k truncation).</p></li>
+</ul>
+</li>
+</ul>
+<p>You can combine them via <code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.stability.evaluator.StabilityEvaluator</span></code>
+by selecting appropriate metric names in the <code class="docutils literal notranslate"><span class="pre">metrics</span></code> argument.</p>
+</section>
+<section id="why-do-some-metrics-return-nan">
+<h3>Why do some metrics return NaN?<a class="headerlink" href="#why-do-some-metrics-return-nan" title="Link to this heading"></a></h3>
+<p>Some stability measures lose meaning in edge cases, for example:</p>
+<ul class="simple">
+<li><p>Subsets are always empty or always full.</p></li>
+<li><p>All runs select <em>exactly</em> the same features (no variability to measure).</p></li>
+<li><p>Some denominators in corrected metrics become zero.</p></li>
+</ul>
+<p>In such cases, <code class="docutils literal notranslate"><span class="pre">pyensemblefs</span></code> may return <code class="docutils literal notranslate"><span class="pre">NaN</span></code> rather than a numeric
+score to avoid misleading interpretations.</p>
+<p>Check:</p>
+<ul class="simple">
+<li><p>That there is sufficient variation across runs.</p></li>
+<li><p>That the subset sizes are not degenerate (all-zero or all-one vectors).</p></li>
+</ul>
+</section>
+</section>
+<section id="practical-issues">
+<h2>Practical Issues<a class="headerlink" href="#practical-issues" title="Link to this heading"></a></h2>
+<section id="importerror-no-module-named-sklearn-pandas-or-matplotlib">
+<h3>ImportError: no module named ‘sklearn’, ‘pandas’ or ‘matplotlib’<a class="headerlink" href="#importerror-no-module-named-sklearn-pandas-or-matplotlib" title="Link to this heading"></a></h3>
+<p>Several parts of <code class="docutils literal notranslate"><span class="pre">pyensemblefs</span></code> rely on external libraries:</p>
+<ul class="simple">
+<li><p>Core feature selection: <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy</span></code>.</p></li>
+<li><p>Dataset handling: <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p></li>
+<li><p>Visualization: <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, <code class="docutils literal notranslate"><span class="pre">upsetplot</span></code>.</p></li>
+</ul>
+<p>Install missing dependencies via:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>scikit-learn<span class="w"> </span>pandas<span class="w"> </span>matplotlib<span class="w"> </span>seaborn<span class="w"> </span>upsetplot
+</pre></div>
+</div>
+</section>
+<section id="stabilityevaluator-raises-an-error-about-input-shape">
+<h3>StabilityEvaluator raises an error about input shape<a class="headerlink" href="#stabilityevaluator-raises-an-error-about-input-shape" title="Link to this heading"></a></h3>
+<p>The high-level evaluator currently expects a binary <strong>support matrix</strong>
+of shape <code class="docutils literal notranslate"><span class="pre">(n_runs,</span> <span class="pre">n_features)</span></code> when <code class="docutils literal notranslate"><span class="pre">mode=&quot;subset&quot;</span></code>.</p>
+<p>Checklist:</p>
+<ul class="simple">
+<li><p>Ensure you are passing a 2D NumPy array.</p></li>
+<li><p>Ensure values are in <code class="docutils literal notranslate"><span class="pre">{0,</span> <span class="pre">1}</span></code> (or very close).</p></li>
+<li><p>Make sure the number of features is consistent across runs.</p></li>
+</ul>
+<p>For ranking-based metrics, convert rankings into subset masks or use the
+ranking-aware metrics (Yu, Zucknick) with appropriate pre-processing.</p>
+</section>
+<section id="how-can-i-speed-up-my-ensemble">
+<h3>How can I speed up my ensemble?<a class="headerlink" href="#how-can-i-speed-up-my-ensemble" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use fewer but more informative base selectors.</p></li>
+<li><p>Reduce the number of bootstrap samples in exploratory runs.</p></li>
+<li><p>Enable multi-processing in bootstrapping components (e.g., <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code>).</p></li>
+<li><p>Cache intermediate results whenever possible (e.g., scores, rankings).</p></li>
+<li><p>Use smaller subsets of features during prototyping and scale up later.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorials/visualization_tools.html" class="btn btn-neutral float-left" title="Visualization Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api/index.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
