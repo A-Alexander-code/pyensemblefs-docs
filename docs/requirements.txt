@@ -1,11 +1,12 @@
 --extra-index-url https://test.pypi.org/simple/
 
-# Library being documented (hosted on TestPyPI)
+# Library under documentation
 pyensemblefs==0.3.13
 
-# Core documentation tools
+# Sphinx & extensions
 sphinx
 sphinx_rtd_theme
 sphinx_design
 myst-parser
 sphinx-copybutton
+sphinx-autodoc-typehints
