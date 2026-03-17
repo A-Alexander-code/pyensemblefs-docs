@@ -38,7 +38,7 @@
           
           <a href="../index.html" class="icon icon-home">
             pyensemblefs
-              <img src="../_static/pyensamblefs_logo_v1.png" class="logo" alt="Logo"/>
+              <img src="../_static/pyensamblefs_logo_v2.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -158,8 +158,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../api/aggregators.html#overview">Overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../api/aggregators.html#aggregator-families">Aggregator families</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../api/aggregators.html#core-classes">Core classes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../api/aggregators.html#available-abc-rules-in-pyensemblefs">Available ABC rules in pyensemblefs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../api/aggregators.html#using-abcvoteaggregator">Using ABCVoteAggregator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../api/aggregators.html#module-reference">Module reference</a></li>
 </ul>
 </li>
@@ -255,18 +253,20 @@
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h1>
 <section id="minimal-example">
 <h2>Minimal example<a class="headerlink" href="#minimal-example" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ensemble.featureselector</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureSelector</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">utils.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">loader</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyensemblefs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_pima_dataset</span>
 
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;sim_pow&quot;</span><span class="p">)</span>  <span class="c1"># as example data/sim_pow.csv</span>
-<span class="n">fs</span> <span class="o">=</span> <span class="n">FeatureSelector</span><span class="p">(</span>
-    <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;variance&quot;</span><span class="p">],</span>   <span class="c1"># check fsmethods/</span>
-    <span class="n">n_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-    <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
-    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>              <span class="c1"># multiprocessing</span>
-<span class="p">)</span>
-<span class="n">ranking</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">fit_rank</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ranking</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="c1"># Load dataset</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_pima_dataset</span><span class="p">()</span>
+
+<span class="c1"># Retrieve a pre-defined configuration (e.g., Relief filter)</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">pyensemblefs</span><span class="o">.</span><span class="n">get_config</span><span class="p">(</span><span class="s1">&#39;relief&#39;</span><span class="p">,</span> <span class="n">n_bootrap</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">fnc_aggregation</span><span class="o">=</span><span class="s1">&#39;voting&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compute feature scores</span>
+<span class="n">df_feature_scores</span> <span class="o">=</span> <span class="n">pyensemblefs</span><span class="o">.</span><span class="n">compute_scores</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Extract the most relevant features</span>
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="n">pyensemblefs</span><span class="o">.</span><span class="n">extract_features</span><span class="p">(</span><span class="n">n_max_features</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

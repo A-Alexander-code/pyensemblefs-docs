@@ -6,15 +6,17 @@ Minimal example
 
 .. code-block:: python
 
-   from ensemble.featureselector import FeatureSelector
-   from utils.datasets import loader
+    import pyensemblefs
+    from pyensemblefs.datasets import load_pima_dataset
 
-   X, y = load_dataset("sim_pow")  # as example data/sim_pow.csv
-   fs = FeatureSelector(
-       methods=["variance"],   # check fsmethods/
-       n_features=10,
-       n_bootstraps=50,
-       n_jobs=-1,              # multiprocessing
-   )
-   ranking = fs.fit_rank(X, y)
-   print(ranking[:10])
+    # Load dataset
+    df = load_pima_dataset()
+
+    # Retrieve a pre-defined configuration (e.g., Relief filter)
+    cfg = pyensemblefs.get_config('relief', n_bootrap=100, fnc_aggregation='voting')
+
+    # Compute feature scores
+    df_feature_scores = pyensemblefs.compute_scores(cfg, df)
+
+    # Extract the most relevant features
+    df_filtered = pyensemblefs.extract_features(n_max_features=10)

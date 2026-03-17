@@ -34,8 +34,8 @@ and stability assessment, depending on selector type.
 +=================+=========================+===================================+======================================+
 | Subset          | SubsetFilter,          | - Selection frequency             | - Jaccard, Dice, Ochiai             |
 |                 | MRMRSubset, CFSSubset, | - Majority / threshold voting     | - Hamming, Novovicova, Davis        |
-|                 | FCBFSubset             | - ABC voting rules (AV, SAV,      | - Lustgarten, Phi, Kappa            |
-|                 |                         |   SeqPAV, Monroe, etc.)          | - Nogueira                           |
+|                 | FCBFSubset             | - Top-k binary selection          | - Lustgarten, Phi, Kappa            |
+|                 |                         |                                   | - Nogueira                           |
 +-----------------+-------------------------+-----------------------------------+--------------------------------------+ 
 | Ranking         | RankingFilter,         | - Mean / median rank              | - Yu (top-k)                         |
 |                 | RankedSubsetFilter,    | - Borda from ranks                | - Zucknick (top-k)                   |
@@ -62,10 +62,3 @@ Practical Guidelines
   - Use corrected metrics (Nogueira, Kappa, Lustgarten) when comparing
     methods with different subset sizes.
   - Use ranking-based metrics (Yu, Zucknick) when top-k order matters.
-
-- ABC voting rules are particularly useful when:
-
-  - You want a fixed committee size (number of features).
-  - You treat feature selection as a multi-winner voting problem.
-  - You wish to explore different approval-based philosophies
-    (AV, SAV, SeqPAV, Phragmén, etc.).

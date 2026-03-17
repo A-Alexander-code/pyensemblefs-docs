@@ -30,7 +30,7 @@ Aggregation Methods
 
 Aggregation rules combine feature selection results across multiple
 bootstrap replicates or multiple base selectors.  
-This section includes score-based, rank-based, subset-based, and ABC-vote
+This section includes score-based, rank-based, and subset-based
 aggregation rules.
 
 .. toctree::
