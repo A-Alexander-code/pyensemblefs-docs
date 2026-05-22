@@ -78,10 +78,16 @@ To verify that the package and its internal modules load correctly:
 
 .. code-block:: python
 
-   from pyensemblefs.ensemble.featureselector import FeatureSelector
+   from sklearn.datasets import load_breast_cancer
+  from pyensemblefs.fsmethods.rank import RankingFilter
 
-   selector = FeatureSelector(method="variance", k=5)
-   print(selector)
+  X, y = load_breast_cancer(return_X_y=True)
+
+  # Create and fit the ranking filter with variance scorer
+  selector = RankingFilter(scorer="variance", target_type="classification")
+  selector.fit(X, y)
+  print(f"Ranked features: {selector.ranking_}")
+  print(f"Feature importances (scores): {selector.feature_importances_}")
 
 Optional dependencies
 ~~~~~~~~~~~~~~~~~~~~~

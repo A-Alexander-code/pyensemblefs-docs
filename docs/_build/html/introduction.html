@@ -317,10 +317,16 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
 <section id="quick-check">
 <h3>Quick check<a class="headerlink" href="#quick-check" title="Link to this heading"></a></h3>
 <p>To verify that the package and its internal modules load correctly:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.ensemble.featureselector</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureSelector</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_breast_cancer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.fsmethods.rank</span><span class="w"> </span><span class="kn">import</span> <span class="n">RankingFilter</span>
 
-<span class="n">selector</span> <span class="o">=</span> <span class="n">FeatureSelector</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;variance&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Create and fit the ranking filter with variance scorer</span>
+<span class="n">selector</span> <span class="o">=</span> <span class="n">RankingFilter</span><span class="p">(</span><span class="n">scorer</span><span class="o">=</span><span class="s2">&quot;variance&quot;</span><span class="p">,</span> <span class="n">target_type</span><span class="o">=</span><span class="s2">&quot;classification&quot;</span><span class="p">)</span>
+<span class="n">selector</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ranked features: </span><span class="si">{</span><span class="n">selector</span><span class="o">.</span><span class="n">ranking_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Feature importances (scores): </span><span class="si">{</span><span class="n">selector</span><span class="o">.</span><span class="n">feature_importances_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
