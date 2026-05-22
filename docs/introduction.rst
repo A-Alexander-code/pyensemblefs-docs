@@ -10,6 +10,7 @@ selection (FS) algorithms through bootstrapping, aggregation methods, and stabil
 The library is designed for reproducibility, parallel execution, and seamless integration with
 standard machine learning workflows such as scikit-learn pipelines.
 
+
 Features at a glance
 --------------------
 
