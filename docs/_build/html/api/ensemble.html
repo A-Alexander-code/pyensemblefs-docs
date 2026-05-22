@@ -170,7 +170,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#subset-methods">Subset Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#ranking-methods">Ranking Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#score-based-methods">Score-Based Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#module-pyensemblefs.fsmethods">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -178,11 +178,9 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#stability-metrics">Stability Metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="stability.html">Stability Metrics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="stability.html#high-level-interface-stabilityevaluator">1. High-level interface: StabilityEvaluator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-core-metrics">2. Mathematical definitions (12 core metrics)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#frequency-based-stability-scores">3. Frequency-based stability scores</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">4. Similarity matrices and expectations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-intersection-based-measures">5. Adjusted intersection-based measures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#other-adjusted-measures-yu-zucknick-sechidis">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-supported-metrics">2. Mathematical definitions (12 supported metrics)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">3. Similarity matrices and expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-similarity-based-measures-yu-zucknick">4. Adjusted similarity-based measures (Yu, Zucknick)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stability.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -193,7 +191,7 @@
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#training-utilities">Training Utilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#evaluation-metrics">Evaluation Metrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#example-usage">Example Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="estimators.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimators.html#module-pyensemblefs.estimators">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -205,7 +203,7 @@
 <li class="toctree-l4"><a class="reference internal" href="utils.html#plotting-helpers">Plotting Helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.html#global-constants">Global Constants</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.html#api-reference">API Reference</a></li>
-<li class="toctree-l4"><a class="reference internal" href="utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#module-pyensemblefs.utils.consts">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -305,7 +303,7 @@ results_  →  stacked into a matrix R ∈ ℝ^{B×p}
 R  →  Aggregator  →  final scores / ranks / mask
 </pre></div>
 </div>
-<p>This is implemented by <code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.ensemble.bootstrapper.Bootstrapper</span></code>,
+<p>This is implemented by <a class="reference internal" href="#pyensemblefs.ensemble.bootstrapper.Bootstrapper" title="pyensemblefs.ensemble.bootstrapper.Bootstrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.ensemble.bootstrapper.Bootstrapper</span></code></a>,
 which:</p>
 <ul class="simple">
 <li><p>draws <span class="math notranslate nohighlight">\(B\)</span> bootstrap resamples of <span class="math notranslate nohighlight">\((X, y)\)</span>,</p></li>
@@ -333,7 +331,7 @@ where σ(b) encodes the scheduling strategy:
 </pre></div>
 </div>
 <p>The heterogeneous logic is implemented by
-<code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper</span></code>, which:</p>
+<a class="reference internal" href="#pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper" title="pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper</span></code></a>, which:</p>
 <ul class="simple">
 <li><p>receives a list of base selectors (filters or model-based),</p></li>
 <li><p>distributes them over bootstrap resamples according to a chosen strategy,</p></li>
@@ -366,6 +364,42 @@ across all bootstrap iterations.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">results_</span></code> : array (B, p)
 Binary selection masks, scores or ranks depending on the selector.</p></li>
 </ul>
+<dl class="py class" id="module-pyensemblefs.ensemble.bootstrapper">
+<dt class="sig sig-object py" id="pyensemblefs.ensemble.bootstrapper.Bootstrapper">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.ensemble.bootstrapper.</span></span><span class="sig-name descname"><span class="pre">Bootstrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fsmethod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bootstraps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/ensemble/bootstrapper.html#Bootstrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.ensemble.bootstrapper.Bootstrapper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Run bootstrapped feature selection with parallelization.</p>
+<dl class="simple">
+<dt>After fit(), exposes:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><a href="#id1"><span class="problematic" id="id2">results_</span></a>: np.ndarray of shape (B, p), either binary supports (0/1) or scores,</dt><dd><p>depending on the FS output availability (see _run_single).</p>
+</dd>
+</dl>
+</li>
+<li><p><a href="#id3"><span class="problematic" id="id4">selected_features_</span></a>: will be populated if an external aggregator sets it later.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.ensemble.bootstrapper.Bootstrapper.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/ensemble/bootstrapper.html#Bootstrapper.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.ensemble.bootstrapper.Bootstrapper.aggregate" title="Link to this definition"></a></dt>
+<dd><p>Aggregate results using a provided Aggregator object.</p>
+<dl class="simple">
+<dt>Contract:</dt><dd><ul class="simple">
+<li><p>aggregator.fit(<a href="#id5"><span class="problematic" id="id6">self.results_</span></a>) will be called.</p></li>
+<li><p>If the aggregator exposes <a href="#id7"><span class="problematic" id="id8">selected_features_</span></a>, it will be copied here.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.ensemble.bootstrapper.Bootstrapper.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/ensemble/bootstrapper.html#Bootstrapper.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.ensemble.bootstrapper.Bootstrapper.fit" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="metabootstrapper-heterogeneous">
 <h2>MetaBootstrapper (heterogeneous)<a class="headerlink" href="#metabootstrapper-heterogeneous" title="Link to this heading"></a></h2>
@@ -383,6 +417,49 @@ feature selectors, supporting strategies:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">rank_mat_</span></code>  : (B_r, p) stacked ranking vectors</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">methods_used_</span></code> : list of selector names used per bootstrap</p></li>
 </ul>
+<dl class="py class" id="module-pyensemblefs.ensemble.metabootstrapper">
+<dt class="sig sig-object py" id="pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.ensemble.metabootstrapper.</span></span><span class="sig-name descname"><span class="pre">MetaBootstrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs_methods</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bootstraps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sequential'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/ensemble/metabootstrapper.html#MetaBootstrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Heterogeneous bootstrapper: cycles or samples from multiple FS methods.
+Produces per-bootstrap binary supports (0/1) aligned to the original feature order.</p>
+<section id="attributes-after-fit">
+<h3>Attributes after fit:<a class="headerlink" href="#attributes-after-fit" title="Link to this heading"></a></h3>
+<p><a href="#id9"><span class="problematic" id="id10">results_</span></a>      : np.ndarray, shape (B, p), int {0,1}  -&gt; binary selection mask per bootstrap
+<a href="#id11"><span class="problematic" id="id12">score_mat_</span></a>    : np.ndarray | None, shape (B_s, p)    -&gt; stacked scores (only rows where selector produced scores)
+<a href="#id13"><span class="problematic" id="id14">rank_mat_</span></a>     : np.ndarray | None, shape (B_r, p)    -&gt; stacked ranks  (only rows where selector produced ranks)
+<a href="#id15"><span class="problematic" id="id16">methods_used_</span></a> : List[str], length B                  -&gt; selector class name used at each bootstrap</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/ensemble/metabootstrapper.html#MetaBootstrapper.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper.fit" title="Link to this definition"></a></dt>
+<dd><p>Run B bootstraps; build binary selection matrix and optional score/rank stacks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>y</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fs_methods</strong> (<em>List</em><em>[</em><em>Any</em><em>]</em>)</p></li>
+<li><p><strong>n_bootstraps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>random_state</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p></li>
+<li><p><strong>strategy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>normalize_scores</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>method_weights</strong> (<em>Optional</em><em>[</em><em>Dict</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="ensemblefeatureselector">
 <h2>EnsembleFeatureSelector<a class="headerlink" href="#ensemblefeatureselector" title="Link to this heading"></a></h2>
@@ -394,6 +471,26 @@ feature selectors, supporting strategies:</p>
 <li><p>score-based aggregators</p></li>
 <li><p>binary input aggregators</p></li>
 </ul>
+<dl class="py class" id="module-pyensemblefs.ensemble.featureselector">
+<dt class="sig sig-object py" id="pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.ensemble.featureselector.</span></span><span class="sig-name descname"><span class="pre">EnsembleFeatureSelector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/ensemble/featureselector.html#EnsembleFeatureSelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code></a>, <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransformerMixin</span></code></a></p>
+<p>Glue component: Bootstrapper (produces per-bootstrap matrices) + Aggregator
+(produces ordered indices or a score vector) → final feature subset.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/ensemble/featureselector.html#EnsembleFeatureSelector.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector.fit" title="Link to this definition"></a></dt>
+<dd><p>Fit bootstrapper and aggregator, then compute final ordered indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/ensemble/featureselector.html#EnsembleFeatureSelector.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector.transform" title="Link to this definition"></a></dt>
+<dd><p>Select the columns given by <a href="#id17"><span class="problematic" id="id18">selected_indices_</span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="minimal-example">
 <h2>Minimal example<a class="headerlink" href="#minimal-example" title="Link to this heading"></a></h2>

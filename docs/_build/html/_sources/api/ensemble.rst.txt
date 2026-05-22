@@ -188,24 +188,24 @@ Minimal example
 .. code-block:: python
 
     from sklearn.datasets import load_breast_cancer
-  from sklearn.feature_selection import SelectKBest, f_classif
+    from sklearn.feature_selection import SelectKBest, f_classif
 
-  from pyensemblefs.ensemble.bootstrapper import Bootstrapper
-  from pyensemblefs.ensemble.featureselector import EnsembleFeatureSelector
-  from pyensemblefs.aggregators.rank import BordaFromRanksAggregator
+    from pyensemblefs.ensemble.bootstrapper import Bootstrapper
+    from pyensemblefs.ensemble.featureselector import EnsembleFeatureSelector
+    from pyensemblefs.aggregators.rank import BordaFromRanksAggregator
 
-  X, y = load_breast_cancer(return_X_y=True)
+    X, y = load_breast_cancer(return_X_y=True)
 
-  base_fs = SelectKBest(score_func=f_classif, k=10)
-  bootstrapper = Bootstrapper(fsmethod=fsmethod, n_bootstraps=50)
+    base_fs = SelectKBest(score_func=f_classif, k=10)
+    bootstrapper = Bootstrapper(fs_method=base_fs, n_bootstraps=30)
 
-  aggregator = BordaFromRanksAggregator()
+    aggregator = BordaFromRanksAggregator()
 
-  selector = EnsembleFeatureSelector(
-      bootstrapper=bootstrapper,
-      aggregator=aggregator,
-      k=10,
-  )
+    selector = EnsembleFeatureSelector(
+        bootstrapper=bootstrapper,
+        aggregator=aggregator,
+        k=10,
+    )
 
-  selector.fit(X, y)
-  print(selector.selected_indices_)
+    selector.fit(X, y)
+    print(selector.selected_indices_)

@@ -16,22 +16,14 @@ Example
 
 .. code-block:: python
 
+   from sklearn.datasets import load_breast_cancer
+   from sklearn.feature_selection import SelectKBest, f_classif
    from pyensemblefs.ensemble.bootstrapper import Bootstrapper
-   from pyensemblefs.fsmethods.rank import RankingFilter
-   from pyensemblefs.aggregators.score import MeanAggregator
 
-   # Create feature selection method instance
-   fsmethod = RankingFilter(scorer='variance')
+   X, y = load_breast_cancer(return_X_y=True)
 
-   # Create the bootstrapper
-   boot = Bootstrapper(fsmethod=fsmethod, n_bootstraps=50)
+   base_fs = SelectKBest(score_func=f_classif, k=10)
+   boot = Bootstrapper(fs_method=base_fs, n_bootstraps=50)
+   results = boot.run(X, y)
 
-   # Run the bootstrapping process
-   boot.fit(X, y)
-
-   # Create aggregator and compute ensemble results
-   aggregator = MeanAggregator(top_k=10)  # Mean of scores - Select top 10 features
-   aggregated = boot.aggregate(aggregator)
-
-   # Access the results
-   print(aggregated.selected_features_)
+   aggregated = boot.aggregate(results)

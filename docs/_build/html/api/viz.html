@@ -168,7 +168,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#subset-methods">Subset Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#ranking-methods">Ranking Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#score-based-methods">Score-Based Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#module-pyensemblefs.fsmethods">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -176,11 +176,9 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#stability-metrics">Stability Metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="stability.html">Stability Metrics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="stability.html#high-level-interface-stabilityevaluator">1. High-level interface: StabilityEvaluator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-core-metrics">2. Mathematical definitions (12 core metrics)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#frequency-based-stability-scores">3. Frequency-based stability scores</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">4. Similarity matrices and expectations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-intersection-based-measures">5. Adjusted intersection-based measures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#other-adjusted-measures-yu-zucknick-sechidis">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-supported-metrics">2. Mathematical definitions (12 supported metrics)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">3. Similarity matrices and expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-similarity-based-measures-yu-zucknick">4. Adjusted similarity-based measures (Yu, Zucknick)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stability.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -191,7 +189,7 @@
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#training-utilities">Training Utilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#evaluation-metrics">Evaluation Metrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#example-usage">Example Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="estimators.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimators.html#module-pyensemblefs.estimators">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -203,7 +201,7 @@
 <li class="toctree-l4"><a class="reference internal" href="utils.html#plotting-helpers">Plotting Helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.html#global-constants">Global Constants</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.html#api-reference">API Reference</a></li>
-<li class="toctree-l4"><a class="reference internal" href="utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#module-pyensemblefs.utils.consts">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -335,10 +333,35 @@ facade that exposes all visualization functions under a single object.</p>
 <section id="consensus-ranking">
 <h3><a class="toc-backref" href="#id5" role="doc-backlink">Consensus Ranking</a><a class="headerlink" href="#consensus-ranking" title="Link to this heading"></a></h3>
 <p>Computes a consensus ordering across ranking-based selectors.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.viz.ranking.consensus_ranking">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.viz.ranking.</span></span><span class="sig-name descname"><span class="pre">consensus_ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ranking</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Consensus</span> <span class="pre">Ranking'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/viz/ranking.html#consensus_ranking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.viz.ranking.consensus_ranking" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="top-k-frequency-plot">
 <h3><a class="toc-backref" href="#id6" role="doc-backlink">Top-K Frequency Plot</a><a class="headerlink" href="#top-k-frequency-plot" title="Link to this heading"></a></h3>
 <p>Plots how often each feature appears in the top-k positions.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.viz.ranking.plot_topk_frequency">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.viz.ranking.</span></span><span class="sig-name descname"><span class="pre">plot_topk_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/viz/ranking.html#plot_topk_frequency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.viz.ranking.plot_topk_frequency" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>frequencies</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>ref_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>savepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
+<li><p><strong>rotate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>ylim</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>annotate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 <section id="stability-visualizations">
@@ -346,15 +369,30 @@ facade that exposes all visualization functions under a single object.</p>
 <section id="feature-frequency">
 <h3><a class="toc-backref" href="#id8" role="doc-backlink">Feature Frequency</a><a class="headerlink" href="#feature-frequency" title="Link to this heading"></a></h3>
 <p>Barplot of how frequently each feature is selected across bootstrap runs.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.viz.stability.feature_frequency">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.viz.stability.</span></span><span class="sig-name descname"><span class="pre">feature_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_or_scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/viz/stability.html#feature_frequency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.viz.stability.feature_frequency" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="stability-heatmap">
 <h3><a class="toc-backref" href="#id9" role="doc-backlink">Stability Heatmap</a><a class="headerlink" href="#stability-heatmap" title="Link to this heading"></a></h3>
 <p>Displays the binary selection matrix (or top-k converted scores) across
 bootstraps.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.viz.stability.stability_heatmap">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.viz.stability.</span></span><span class="sig-name descname"><span class="pre">stability_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_or_scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Stability</span> <span class="pre">Heatmap'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/viz/stability.html#stability_heatmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.viz.stability.stability_heatmap" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="stability-curve">
 <h3><a class="toc-backref" href="#id10" role="doc-backlink">Stability Curve</a><a class="headerlink" href="#stability-curve" title="Link to this heading"></a></h3>
 <p>Line plot of stability score vs number of bootstraps.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.viz.stability.stability_over_bootstraps">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.viz.stability.</span></span><span class="sig-name descname"><span class="pre">stability_over_bootstraps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stability_scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/viz/stability.html#stability_over_bootstraps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.viz.stability.stability_over_bootstraps" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 </section>
 <section id="aggregator-comparison-plots">
@@ -362,19 +400,39 @@ bootstraps.</p>
 <section id="aggregator-comparison-heatmap">
 <h3><a class="toc-backref" href="#id12" role="doc-backlink">Aggregator Comparison Heatmap</a><a class="headerlink" href="#aggregator-comparison-heatmap" title="Link to this heading"></a></h3>
 <p>Computes and visualizes agreement among multiple aggregators.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.viz.comparison.compare_aggregators_heatmap">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.viz.comparison.</span></span><span class="sig-name descname"><span class="pre">compare_aggregators_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregator_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/viz/comparison.html#compare_aggregators_heatmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.viz.comparison.compare_aggregators_heatmap" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="cumulative-agreement-plot">
 <h3><a class="toc-backref" href="#id13" role="doc-backlink">Cumulative Agreement Plot</a><a class="headerlink" href="#cumulative-agreement-plot" title="Link to this heading"></a></h3>
 <p>Displays cumulative agreement curves across different methods.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.viz.comparison.cumulative_agreement_plot">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.viz.comparison.</span></span><span class="sig-name descname"><span class="pre">cumulative_agreement_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregator_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/viz/comparison.html#cumulative_agreement_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.viz.comparison.cumulative_agreement_plot" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="pairwise-cumulative-agreement">
 <h3><a class="toc-backref" href="#id14" role="doc-backlink">Pairwise Cumulative Agreement</a><a class="headerlink" href="#pairwise-cumulative-agreement" title="Link to this heading"></a></h3>
 <p>Matrix quantifying agreement between pairs of ranking or subset selectors.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.viz.comparison.pairwise_cumulative_agreement">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.viz.comparison.</span></span><span class="sig-name descname"><span class="pre">pairwise_cumulative_agreement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregator_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/viz/comparison.html#pairwise_cumulative_agreement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.viz.comparison.pairwise_cumulative_agreement" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="top-k-upset-plot">
 <h3><a class="toc-backref" href="#id15" role="doc-backlink">Top-K UpSet Plot</a><a class="headerlink" href="#top-k-upset-plot" title="Link to this heading"></a></h3>
 <p>UpSet-style plot showing intersections among the top-k features selected
 by different aggregators.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.viz.comparison.topk_upset_plot">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.viz.comparison.</span></span><span class="sig-name descname"><span class="pre">topk_upset_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregator_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/viz/comparison.html#topk_upset_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.viz.comparison.topk_upset_plot" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 </section>
 <section id="api-reference">

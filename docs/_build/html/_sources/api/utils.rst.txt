@@ -40,9 +40,13 @@ URLs, as defined in :mod:`pyensemblefs.utils.consts`.
 
 .. code-block:: python
 
-   from pyensemblefs.utils.datasets import load_dataset
+   from sklearn.datasets import load_wine
+   import pandas as pd
 
-   X, y = load_dataset("wine")
+   # Load wine dataset
+   data = load_wine(as_frame=True)
+   X = data.data
+   y = data.target
    print(X.shape, y.shape)
 
 

@@ -2,25 +2,23 @@ Example: Computing Stability Across Bootstrap Replicates
 --------------------------------------------------------
 
 The following example demonstrates how to compute multiple stability
-measures from repeated feature selection runs.  
+measures from repeated feature selection runs.
 
 We simulate a scenario where a feature selector is executed over
 ``m`` bootstrap samples, producing either **subsets** or **rankings**.
-These outputs can then be evaluated using any metric implemented in
-``pyensemblefs.stability``.
+For the ranking case, the example first converts each ranking into a
+top-``k`` subset so it can be evaluated with the subset-oriented metrics
+implemented in ``pyensemblefs.stability``.
 
 .. code-block:: python
 
     import numpy as np
-    from pyensemblefs.stability import (
-        Jaccard, Dice, Ochiai, Nogueira,
-        Yu, Zucknick, StabilityEvaluator
-    )
+    from pyensemblefs.stability.evaluator import StabilityEvaluator
 
-    # -------------------------------------------------------------
+    # ---------------------------------------------------------------
     # Simulated feature-selection outputs from m bootstrap replicates
     # (For real usage, these should come from your EnsembleSelector)
-    # -------------------------------------------------------------
+    # ---------------------------------------------------------------
     m = 5               # number of runs
     p = 10              # total number of features
 
@@ -33,7 +31,31 @@ These outputs can then be evaluated using any metric implemented in
         {0, 1, 3, 6}
     ]
 
-    # Example: ranking-based outputs (full rankings)
+    # Convert subset outputs to binary matrix (n_runs x n_features)
+    subset_matrix = np.zeros((m, p), dtype=int)
+    for i, features in enumerate(subset_outputs):
+        for f in features:
+            if f < p:
+                subset_matrix[i, f] = 1
+
+    # ---------------------------------------------------------------
+    # Compute pairwise stability for subset-based methods
+    # ---------------------------------------------------------------
+    evaluator_subset = StabilityEvaluator(
+        metrics=["jaccard", "dice", "ochiai", "nogueira"],
+        mode="subset"
+    )
+
+    results_subset = evaluator_subset.compute(subset_matrix)
+    print("Subset-based stability:")
+    print("  Jaccard mean:", results_subset.values.get("jaccard", "N/A"))
+    print("  Dice mean:", results_subset.values.get("dice", "N/A"))
+    print("  Ochiai mean:", results_subset.values.get("ochiai", "N/A"))
+    print("  Nogueira (corrected) mean:", results_subset.values.get("nogueira", "N/A"))
+
+    # ---------------------------------------------------------------
+    # Compute stability on rankings after converting each ranking to a top-k subset
+    # ---------------------------------------------------------------
     ranking_outputs = [
         np.array([3, 1, 5, 0, 2, 4, 6, 7, 8, 9]),
         np.array([1, 3, 5, 0, 4, 2, 6, 7, 9, 8]),
@@ -42,40 +64,36 @@ These outputs can then be evaluated using any metric implemented in
         np.array([3, 1, 5, 2, 0, 4, 6, 7, 9, 8])
     ]
 
-    # -------------------------------------------------------------
-    # Compute pairwise stability for subset-based methods
-    # -------------------------------------------------------------
-    jaccard = Jaccard().pairwise(subset_outputs)
-    dice = Dice().pairwise(subset_outputs)
-    ochiai = Ochiai().pairwise(subset_outputs)
-    nogueira = Nogueira(p=p).pairwise(subset_outputs)
+    # Convert rankings to subset selections (select top k=5 features)
+    k = 5
+    ranking_matrix = np.zeros((m, p), dtype=int)
+    for i, ranking in enumerate(ranking_outputs):
+        top_k = ranking[:k]
+        for f in top_k:
+            if f < p:
+                ranking_matrix[i, f] = 1
 
-    print("Subset-based stability:")
-    print("  Jaccard mean:", np.mean(jaccard))
-    print("  Dice mean:", np.mean(dice))
-    print("  Ochiai mean:", np.mean(ochiai))
-    print("  Nogueira (corrected) mean:", np.mean(nogueira))
-
-    # -------------------------------------------------------------
-    # Compute pairwise stability for ranking-based methods
-    # -------------------------------------------------------------
-    yu = Yu(k=5).pairwise(ranking_outputs)
-    zucknick = Zucknick(k=5).pairwise(ranking_outputs)
-
-    print("\nRanking-based stability:")
-    print("  Yu mean:", np.mean(yu))
-    print("  Zucknick mean:", np.mean(zucknick))
-
-    # -------------------------------------------------------------
-    # Using the StabilityEvaluator for multiple metrics at once
-    # -------------------------------------------------------------
-    evaluator = StabilityEvaluator(
-        metrics=["Jaccard", "Dice", "Nogueira"],
-        p=p,
-        k=5
+    evaluator_ranking = StabilityEvaluator(
+        metrics=["jaccard", "dice", "ochiai", "nogueira"],
+        mode="subset"
     )
 
-    results = evaluator.evaluate(subset_outputs)
+    results_ranking = evaluator_ranking.compute(ranking_matrix)
+    print("\nTop-k stability derived from rankings:")
+    print("  Jaccard mean:", results_ranking.values.get("jaccard", "N/A"))
+    print("  Dice mean:", results_ranking.values.get("dice", "N/A"))
+    print("  Ochiai mean:", results_ranking.values.get("ochiai", "N/A"))
+    print("  Nogueira (corrected) mean:", results_ranking.values.get("nogueira", "N/A"))
+
+    # ---------------------------------------------------------------
+    # Using the StabilityEvaluator for multiple metrics at once
+    # ---------------------------------------------------------------
+    evaluator = StabilityEvaluator(
+        metrics=["jaccard", "dice", "nogueira"],
+        mode="subset"
+    )
+
+    results = evaluator.compute(subset_matrix)
     print("\nEvaluator summary:")
-    for metric, value in results.items():
+    for metric, value in results.values.items():
         print(f"  {metric}: {value:.4f}")

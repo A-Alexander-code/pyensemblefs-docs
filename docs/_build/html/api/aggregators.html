@@ -169,7 +169,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#subset-methods">Subset Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#ranking-methods">Ranking Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#score-based-methods">Score-Based Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#module-pyensemblefs.fsmethods">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -177,11 +177,9 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#stability-metrics">Stability Metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="stability.html">Stability Metrics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="stability.html#high-level-interface-stabilityevaluator">1. High-level interface: StabilityEvaluator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-core-metrics">2. Mathematical definitions (12 core metrics)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#frequency-based-stability-scores">3. Frequency-based stability scores</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">4. Similarity matrices and expectations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-intersection-based-measures">5. Adjusted intersection-based measures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#other-adjusted-measures-yu-zucknick-sechidis">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-supported-metrics">2. Mathematical definitions (12 supported metrics)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">3. Similarity matrices and expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-similarity-based-measures-yu-zucknick">4. Adjusted similarity-based measures (Yu, Zucknick)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stability.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -192,7 +190,7 @@
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#training-utilities">Training Utilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#evaluation-metrics">Evaluation Metrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#example-usage">Example Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="estimators.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimators.html#module-pyensemblefs.estimators">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -204,7 +202,7 @@
 <li class="toctree-l4"><a class="reference internal" href="utils.html#plotting-helpers">Plotting Helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.html#global-constants">Global Constants</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.html#api-reference">API Reference</a></li>
-<li class="toctree-l4"><a class="reference internal" href="utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#module-pyensemblefs.utils.consts">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -258,7 +256,7 @@ subset-based rules described in the paper.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>All aggregators follow a common contract defined in
-<code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.base.BaseAggregator</span></code>:</p>
+<a class="reference internal" href="#pyensemblefs.aggregators.base.BaseAggregator" title="pyensemblefs.aggregators.base.BaseAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.base.BaseAggregator</span></code></a>:</p>
 <ul class="simple">
 <li><p>Input is a 2D array <code class="docutils literal notranslate"><span class="pre">results</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(n_bootstraps,</span> <span class="pre">n_features)</span></code>.</p></li>
 <li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">aggregate()</span></code> returns a 1D vector of length <code class="docutils literal notranslate"><span class="pre">n_features</span></code> (scores, ranks
@@ -271,31 +269,31 @@ or a binary mask, depending on the subclass).</p></li>
 <h2>Aggregator families<a class="headerlink" href="#aggregator-families" title="Link to this heading"></a></h2>
 <section id="score-based-aggregators">
 <h3>Score-based aggregators<a class="headerlink" href="#score-based-aggregators" title="Link to this heading"></a></h3>
-<p>Defined in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score</span></code>, they treat <strong>higher values
+<p>Defined in <a class="reference internal" href="#module-pyensemblefs.aggregators.score" title="pyensemblefs.aggregators.score"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score</span></code></a>, they treat <strong>higher values
 as better</strong> and work directly on real-valued matrices of scores
 (e.g., feature importances or relevance scores per bootstrap):</p>
 <ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.MeanAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.score.MeanAggregator" title="pyensemblefs.aggregators.score.MeanAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.MeanAggregator</span></code></a>
 Arithmetic mean of scores across bootstraps.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.SumAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.score.SumAggregator" title="pyensemblefs.aggregators.score.SumAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.SumAggregator</span></code></a>
 Sum of scores across bootstraps.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.MedianAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.score.MedianAggregator" title="pyensemblefs.aggregators.score.MedianAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.MedianAggregator</span></code></a>
 Median of scores (robust to outliers).</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.TrimmedMeanAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.score.TrimmedMeanAggregator" title="pyensemblefs.aggregators.score.TrimmedMeanAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.TrimmedMeanAggregator</span></code></a>
 Alpha-trimmed mean, removing a fraction of lowest and highest scores.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.WinsorizedMeanAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.score.WinsorizedMeanAggregator" title="pyensemblefs.aggregators.score.WinsorizedMeanAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.WinsorizedMeanAggregator</span></code></a>
 Winsorized mean, clipping extremes to alpha-quantiles.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.GeometricMeanAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.score.GeometricMeanAggregator" title="pyensemblefs.aggregators.score.GeometricMeanAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.GeometricMeanAggregator</span></code></a>
 Geometric mean, emphasizing consistently high scores.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.RankProductAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.score.RankProductAggregator" title="pyensemblefs.aggregators.score.RankProductAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.RankProductAggregator</span></code></a>
 Rank-product style aggregation on scores (log-domain), returning
 <code class="docutils literal notranslate"><span class="pre">-log-product</span></code> so that higher values indicate more stable high scores.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.WeightedScoreAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.score.WeightedScoreAggregator" title="pyensemblefs.aggregators.score.WeightedScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.WeightedScoreAggregator</span></code></a>
 Weighted average of scores across bootstraps, using user-provided weights.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.BordaFromScoresAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.score.BordaFromScoresAggregator" title="pyensemblefs.aggregators.score.BordaFromScoresAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.BordaFromScoresAggregator</span></code></a>
 Converts per-bootstrap scores to ranks and applies Borda count, summing
 Borda points across bootstraps.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.SelectionFrequencyAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.score.SelectionFrequencyAggregator" title="pyensemblefs.aggregators.score.SelectionFrequencyAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.score.SelectionFrequencyAggregator</span></code></a>
 Converts binary supports into selection frequencies in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>; useful
 when base selectors return subsets instead of scores.</p></li>
 </ul>
@@ -305,28 +303,28 @@ section of the paper.</p>
 </section>
 <section id="rank-based-aggregators">
 <h3>Rank-based aggregators<a class="headerlink" href="#rank-based-aggregators" title="Link to this heading"></a></h3>
-<p>Defined in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank</span></code>, they operate on score
+<p>Defined in <a class="reference internal" href="#module-pyensemblefs.aggregators.rank" title="pyensemblefs.aggregators.rank"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank</span></code></a>, they operate on score
 matrices but internally convert them to <strong>ranks per bootstrap</strong> (1 = best)
 and then combine these ranks. They inherit from
-<code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.base.RankAggregator</span></code>, where <strong>lower values
+<a class="reference internal" href="#pyensemblefs.aggregators.base.RankAggregator" title="pyensemblefs.aggregators.base.RankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.base.RankAggregator</span></code></a>, where <strong>lower values
 are better</strong>:</p>
 <ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.MeanRankAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.rank.MeanRankAggregator" title="pyensemblefs.aggregators.rank.MeanRankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.MeanRankAggregator</span></code></a>
 Mean rank across bootstraps.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.MedianRankAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.rank.MedianRankAggregator" title="pyensemblefs.aggregators.rank.MedianRankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.MedianRankAggregator</span></code></a>
 Median rank across bootstraps.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.ConsensusRankAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.rank.ConsensusRankAggregator" title="pyensemblefs.aggregators.rank.ConsensusRankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.ConsensusRankAggregator</span></code></a>
 Conceptually equivalent to mean rank, kept for semantic clarity.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.BordaFromRanksAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.rank.BordaFromRanksAggregator" title="pyensemblefs.aggregators.rank.BordaFromRanksAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.BordaFromRanksAggregator</span></code></a>
 Borda fusion from rank input; if the input does not look like proper
 ranks, it is automatically converted from scores.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator" title="pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator</span></code></a>
 Alpha-trimmed mean of ranks, discarding extreme ranks before averaging.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator" title="pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator</span></code></a>
 Winsorized mean of ranks, clipping extreme ranks to alpha-quantiles.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.GeometricMeanRankAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.rank.GeometricMeanRankAggregator" title="pyensemblefs.aggregators.rank.GeometricMeanRankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.GeometricMeanRankAggregator</span></code></a>
 Geometric mean of ranks, emphasizing consistently high positions.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.RankProductAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.rank.RankProductAggregator" title="pyensemblefs.aggregators.rank.RankProductAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.rank.RankProductAggregator</span></code></a>
 Rank-product aggregation (log-domain), where lower values correspond to
 features consistently near the top.</p></li>
 </ul>
@@ -335,29 +333,29 @@ paper.</p>
 </section>
 <section id="subset-based-voting-aggregators">
 <h3>Subset-based (voting) aggregators<a class="headerlink" href="#subset-based-voting-aggregators" title="Link to this heading"></a></h3>
-<p>Defined in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset</span></code>, they assume that the
+<p>Defined in <a class="reference internal" href="#module-pyensemblefs.aggregators.subset" title="pyensemblefs.aggregators.subset"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset</span></code></a>, they assume that the
 bootstrap outputs are <strong>binary supports</strong> (0/1), and aggregate them using
 frequency and voting rules. They inherit from
-<code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.base.BinaryAggregator</span></code> and ultimately
+<a class="reference internal" href="#pyensemblefs.aggregators.base.BinaryAggregator" title="pyensemblefs.aggregators.base.BinaryAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.base.BinaryAggregator</span></code></a> and ultimately
 produce a binary mask of selected features:</p>
 <ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.MajorityVoteAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.subset.MajorityVoteAggregator" title="pyensemblefs.aggregators.subset.MajorityVoteAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.MajorityVoteAggregator</span></code></a>
 Uses selection frequencies and applies a majority threshold (e.g. 0.5);
 optionally enforces a maximum <code class="docutils literal notranslate"><span class="pre">top_k</span></code> by keeping the most frequent
 features.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.TopKBinaryAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.subset.TopKBinaryAggregator" title="pyensemblefs.aggregators.subset.TopKBinaryAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.TopKBinaryAggregator</span></code></a>
 Selects exactly <code class="docutils literal notranslate"><span class="pre">top_k</span></code> features with highest selection frequency.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.ThresholdAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.subset.ThresholdAggregator" title="pyensemblefs.aggregators.subset.ThresholdAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.ThresholdAggregator</span></code></a>
 Selects all features whose frequency is above a fixed threshold τ.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.QuantileThresholdAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.subset.QuantileThresholdAggregator" title="pyensemblefs.aggregators.subset.QuantileThresholdAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.QuantileThresholdAggregator</span></code></a>
 Selects features whose selection frequency is above a given quantile.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator" title="pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator</span></code></a>
 Weighted voting over bootstrap supports; each bootstrap can have a
 different weight.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator" title="pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator</span></code></a>
 Uses a binomial model and Benjamini–Hochberg FDR control to select
 features with statistically significant selection frequency.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator" title="pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator</span></code></a>
 Uses Clopper–Pearson confidence intervals on selection frequency to
 retain features whose lower CI bound exceeds a threshold.</p></li>
 </ul>
@@ -370,17 +368,1012 @@ frequency rules described in the Aggregation Methods section of the paper.</p>
 </section>
 <section id="module-reference">
 <h2>Module reference<a class="headerlink" href="#module-reference" title="Link to this heading"></a></h2>
-<section id="base-classes">
-<h3>Base classes<a class="headerlink" href="#base-classes" title="Link to this heading"></a></h3>
+<section id="module-pyensemblefs.aggregators.base">
+<span id="base-classes"></span><h3>Base classes<a class="headerlink" href="#module-pyensemblefs.aggregators.base" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.BaseAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.base.</span></span><span class="sig-name descname"><span class="pre">BaseAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/base.html#BaseAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.base.BaseAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<p>Base class for aggregating feature selection results.</p>
+<dl class="simple">
+<dt>Contract:</dt><dd><ul class="simple">
+<li><p>aggregate(results) -&gt; 1D array (n_features,)</p></li>
+<li><p>Input ‘results’ must be 2D: (n_bootstraps, n_features)</p></li>
+<li><p>By default (ScoreAggregators), larger values are better.</p></li>
+<li><p>Subclasses may override fit() to invert the criterion (e.g., RankAggregator).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.BaseAggregator.aggregate">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/base.html#BaseAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.base.BaseAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.BaseAggregator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/base.html#BaseAggregator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.base.BaseAggregator.fit" title="Link to this definition"></a></dt>
+<dd><p>Default fit: assumes higher aggregated values are better (score-like).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.BaseAggregator.get_support">
+<span class="sig-name descname"><span class="pre">get_support</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/base.html#BaseAggregator.get_support"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.base.BaseAggregator.get_support" title="Link to this definition"></a></dt>
+<dd><p>Scikit-learn-like support API.
+- If indices=False: returns boolean mask (n_features,)
+- If indices=True : returns selected indices (1D)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>indices</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.BaseAggregator.rank_">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rank_</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#pyensemblefs.aggregators.base.BaseAggregator.rank_" title="Link to this definition"></a></dt>
+<dd><p>Return indices of features ordered best→worst.
+This is an ordered list of indices, NOT per-feature rank numbers.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.BaseAggregator.scores_">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scores_</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#pyensemblefs.aggregators.base.BaseAggregator.scores_" title="Link to this definition"></a></dt>
+<dd><p>Return raw aggregated values (scores or ranks depending on subclass).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.BaseAggregator.set_top_k">
+<span class="sig-name descname"><span class="pre">set_top_k</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/base.html#BaseAggregator.set_top_k"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.base.BaseAggregator.set_top_k" title="Link to this definition"></a></dt>
+<dd><p>Set or update top_k after construction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#pyensemblefs.aggregators.base.BaseAggregator" title="pyensemblefs.aggregators.base.BaseAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAggregator</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.BinaryAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.base.</span></span><span class="sig-name descname"><span class="pre">BinaryAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/base.html#BinaryAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.base.BinaryAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.BaseAggregator" title="pyensemblefs.aggregators.base.BaseAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAggregator</span></code></a></p>
+<p>Aggregators that produce a binary selection mask (0/1).
+aggregate() must return a 0/1 vector; fit() stores it and builds a stable order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.BinaryAggregator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/base.html#BinaryAggregator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.base.BinaryAggregator.fit" title="Link to this definition"></a></dt>
+<dd><p>Default fit: assumes higher aggregated values are better (score-like).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.RankAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.base.</span></span><span class="sig-name descname"><span class="pre">RankAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/base.html#RankAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.base.RankAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.BaseAggregator" title="pyensemblefs.aggregators.base.BaseAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAggregator</span></code></a></p>
+<p>Aggregators producing per-feature rank values, where LOWER = better.
+aggregate() must return per-feature rank values (e.g., mean rank).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.RankAggregator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/base.html#RankAggregator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.base.RankAggregator.fit" title="Link to this definition"></a></dt>
+<dd><p>Default fit: assumes higher aggregated values are better (score-like).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.base.ScoreAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.base.</span></span><span class="sig-name descname"><span class="pre">ScoreAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/base.html#ScoreAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.BaseAggregator" title="pyensemblefs.aggregators.base.BaseAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAggregator</span></code></a></p>
+<p>Aggregators where higher score = better (use BaseAggregator.fit).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="id1">
 <h3>Score-based aggregators<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<dl class="py class" id="module-pyensemblefs.aggregators.score">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.BordaFromScoresAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.score.</span></span><span class="sig-name descname"><span class="pre">BordaFromScoresAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#BordaFromScoresAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.BordaFromScoresAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<dl class="simple">
+<dt>Borda aggregation from per-bootstrap scores:</dt><dd><ol class="arabic simple">
+<li><p>convert each bootstrap row to ranks (1 = best),</p></li>
+<li><p>assign Borda points (n_features - rank),</p></li>
+<li><p>sum points across bootstraps (higher = better).</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.BordaFromScoresAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#BordaFromScoresAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.BordaFromScoresAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.GeometricMeanAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.score.</span></span><span class="sig-name descname"><span class="pre">GeometricMeanAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#GeometricMeanAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.GeometricMeanAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<p>Geometric mean across bootstraps:
+exp( mean( log(max(scores, eps)) ) ), emphasizing consistent high scores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.GeometricMeanAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#GeometricMeanAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.GeometricMeanAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.MeanAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.score.</span></span><span class="sig-name descname"><span class="pre">MeanAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#MeanAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.MeanAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<p>Arithmetic mean of per-bootstrap scores (higher = better).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.MeanAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#MeanAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.MeanAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.MedianAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.score.</span></span><span class="sig-name descname"><span class="pre">MedianAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#MedianAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.MedianAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<p>Median of per-bootstrap scores (robust to outliers).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.MedianAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#MedianAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.MedianAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.RankProductAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.score.</span></span><span class="sig-name descname"><span class="pre">RankProductAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#RankProductAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.RankProductAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<p>Rank-product style aggregator for <em>scores</em>: compute the product in log-domain.
+Lower log-product indicates consistently high scores; we return the negative
+log-product so that higher is better for downstream selection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>-sum(log(max(scores, eps))) across bootstraps (higher = better).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.RankProductAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#RankProductAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.RankProductAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.SelectionFrequencyAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.score.</span></span><span class="sig-name descname"><span class="pre">SelectionFrequencyAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#SelectionFrequencyAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.SelectionFrequencyAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<p>Convert binary 0/1 supports into selection frequencies in [0, 1].
+Accepts boolean, {0,1} int/float; values are cast to {0,1}.
+Use this when the base FS method returns subsets (supports).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.SelectionFrequencyAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#SelectionFrequencyAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.SelectionFrequencyAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.SumAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.score.</span></span><span class="sig-name descname"><span class="pre">SumAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#SumAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.SumAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<p>Sum of per-bootstrap scores (higher = better).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.SumAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#SumAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.SumAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.TrimmedMeanAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.score.</span></span><span class="sig-name descname"><span class="pre">TrimmedMeanAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#TrimmedMeanAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.TrimmedMeanAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<p>Alpha-trimmed mean across bootstraps: trims a fraction <cite>alpha</cite> on each tail
+before averaging. Useful to mitigate outliers at the bootstrap level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>0.5</em><em>)</em>) – Proportion to trim on each tail (e.g., 0.1 trims 10% lowest &amp; 10% highest).</p></li>
+<li><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.TrimmedMeanAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#TrimmedMeanAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.TrimmedMeanAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.WeightedScoreAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.score.</span></span><span class="sig-name descname"><span class="pre">WeightedScoreAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#WeightedScoreAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.WeightedScoreAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<p>Weighted average of per-bootstrap scores.
+If <cite>weights</cite> is None, reduces to the arithmetic mean.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>,</em><em>)</em><em>, </em><em>optional</em>) – Non-negative weights. They will be normalized to sum to 1.</p></li>
+<li><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.WeightedScoreAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#WeightedScoreAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.WeightedScoreAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.WinsorizedMeanAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.score.</span></span><span class="sig-name descname"><span class="pre">WinsorizedMeanAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#WinsorizedMeanAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.WinsorizedMeanAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<p>Winsorized mean across bootstraps: clip extremes to alpha-quantiles
+before averaging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>0.5</em><em>)</em>) – Proportion to winsorize on each tail.</p></li>
+<li><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.score.WinsorizedMeanAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/score.html#WinsorizedMeanAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.score.WinsorizedMeanAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="id2">
 <h3>Rank-based aggregators<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<dl class="py class" id="module-pyensemblefs.aggregators.rank">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.BordaFromRanksAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.rank.</span></span><span class="sig-name descname"><span class="pre">BordaFromRanksAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#BordaFromRanksAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.BordaFromRanksAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.ScoreAggregator" title="pyensemblefs.aggregators.base.ScoreAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreAggregator</span></code></a></p>
+<p>Borda aggregation from RANK INPUT.</p>
+<dl class="simple">
+<dt>Behavior:</dt><dd><ul class="simple">
+<li><p>If input is integer ranks in {1, …, p}, use them as-is.</p></li>
+<li><p>If input looks like raw scores (floats) or ranks outside [1, p],
+automatically convert to integer ranks (1=best) using
+<cite>_scores_to_ranks_per_bootstrap</cite>.</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>Borda points (higher = better), hence this class derives from ScoreAggregator.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.BordaFromRanksAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#BordaFromRanksAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.BordaFromRanksAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.ConsensusRankAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.rank.</span></span><span class="sig-name descname"><span class="pre">ConsensusRankAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#ConsensusRankAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.ConsensusRankAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.RankAggregator" title="pyensemblefs.aggregators.base.RankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">RankAggregator</span></code></a></p>
+<p>Generic consensus rank by averaging ranks (same as MeanRank but kept
+for semantic clarity and potential future changes).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.ConsensusRankAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#ConsensusRankAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.ConsensusRankAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.GeometricMeanRankAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.rank.</span></span><span class="sig-name descname"><span class="pre">GeometricMeanRankAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#GeometricMeanRankAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.GeometricMeanRankAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.RankAggregator" title="pyensemblefs.aggregators.base.RankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">RankAggregator</span></code></a></p>
+<p>Aggregate per-bootstrap ranks via geometric mean:
+exp(mean(log(rank))) — emphasizes consistently high positions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.GeometricMeanRankAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#GeometricMeanRankAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.GeometricMeanRankAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.MeanRankAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.rank.</span></span><span class="sig-name descname"><span class="pre">MeanRankAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#MeanRankAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.MeanRankAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.RankAggregator" title="pyensemblefs.aggregators.base.RankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">RankAggregator</span></code></a></p>
+<p>Aggregate by the mean rank across bootstraps (lower = better).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.MeanRankAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#MeanRankAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.MeanRankAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.MedianRankAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.rank.</span></span><span class="sig-name descname"><span class="pre">MedianRankAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#MedianRankAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.MedianRankAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.RankAggregator" title="pyensemblefs.aggregators.base.RankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">RankAggregator</span></code></a></p>
+<p>Aggregate by the median rank across bootstraps (robust; lower = better).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.MedianRankAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#MedianRankAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.MedianRankAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.RankProductAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.rank.</span></span><span class="sig-name descname"><span class="pre">RankProductAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#RankProductAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.RankProductAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.RankAggregator" title="pyensemblefs.aggregators.base.RankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">RankAggregator</span></code></a></p>
+<p>Aggregate via rank-product across bootstraps (in log domain for stability).
+Sensitive to features consistently near the top.</p>
+<p>Returns the sum of log-ranks; lower is better.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>]</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.RankProductAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#RankProductAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.RankProductAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.rank.</span></span><span class="sig-name descname"><span class="pre">TrimmedMeanRankAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#TrimmedMeanRankAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.RankAggregator" title="pyensemblefs.aggregators.base.RankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">RankAggregator</span></code></a></p>
+<p>Aggregate per-bootstrap ranks using an alpha-trimmed mean.
+Trims a fraction ‘alpha’ on both tails before averaging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>alpha</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>0.5</em><em>)</em>) – Proportion to trim on each tail (e.g., 0.1 trims 10% lowest and 10% highest).</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#TrimmedMeanRankAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.rank.</span></span><span class="sig-name descname"><span class="pre">WinsorizedMeanRankAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#WinsorizedMeanRankAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.RankAggregator" title="pyensemblefs.aggregators.base.RankAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">RankAggregator</span></code></a></p>
+<p>Aggregate per-bootstrap ranks using a winsorized mean:
+extreme ranks are clipped to alpha-quantiles before averaging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>alpha</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>0.5</em><em>)</em>) – Proportion to winsorize on each tail.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/rank.html#WinsorizedMeanRankAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="subset-voting-aggregators">
-<h3>Subset / voting aggregators<a class="headerlink" href="#subset-voting-aggregators" title="Link to this heading"></a></h3>
+<section id="module-pyensemblefs.aggregators.subset">
+<span id="subset-voting-aggregators"></span><h3>Subset / voting aggregators<a class="headerlink" href="#module-pyensemblefs.aggregators.subset" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.subset.</span></span><span class="sig-name descname"><span class="pre">ClopperPearsonCIThresholdAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha_ci</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#ClopperPearsonCIThresholdAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.BinaryAggregator" title="pyensemblefs.aggregators.base.BinaryAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryAggregator</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha_ci</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#ClopperPearsonCIThresholdAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#ClopperPearsonCIThresholdAggregator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator.fit" title="Link to this definition"></a></dt>
+<dd><p>Default fit: assumes higher aggregated values are better (score-like).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.subset.</span></span><span class="sig-name descname"><span class="pre">FDRControlledFrequencyAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'neglog10q'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#FDRControlledFrequencyAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.BinaryAggregator" title="pyensemblefs.aggregators.base.BinaryAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryAggregator</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>score_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#FDRControlledFrequencyAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#FDRControlledFrequencyAggregator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator.fit" title="Link to this definition"></a></dt>
+<dd><p>Default fit: assumes higher aggregated values are better (score-like).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.MajorityVoteAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.subset.</span></span><span class="sig-name descname"><span class="pre">MajorityVoteAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#MajorityVoteAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.MajorityVoteAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.BinaryAggregator" title="pyensemblefs.aggregators.base.BinaryAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryAggregator</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.MajorityVoteAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#MajorityVoteAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.MajorityVoteAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.MajorityVoteAggregator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#MajorityVoteAggregator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.MajorityVoteAggregator.fit" title="Link to this definition"></a></dt>
+<dd><p>Default fit: assumes higher aggregated values are better (score-like).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.QuantileThresholdAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.subset.</span></span><span class="sig-name descname"><span class="pre">QuantileThresholdAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#QuantileThresholdAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.QuantileThresholdAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.BinaryAggregator" title="pyensemblefs.aggregators.base.BinaryAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryAggregator</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>q</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.QuantileThresholdAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#QuantileThresholdAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.QuantileThresholdAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.QuantileThresholdAggregator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#QuantileThresholdAggregator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.QuantileThresholdAggregator.fit" title="Link to this definition"></a></dt>
+<dd><p>Default fit: assumes higher aggregated values are better (score-like).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.ThresholdAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.subset.</span></span><span class="sig-name descname"><span class="pre">ThresholdAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#ThresholdAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.ThresholdAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.BinaryAggregator" title="pyensemblefs.aggregators.base.BinaryAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryAggregator</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.ThresholdAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#ThresholdAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.ThresholdAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.ThresholdAggregator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#ThresholdAggregator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.ThresholdAggregator.fit" title="Link to this definition"></a></dt>
+<dd><p>Default fit: assumes higher aggregated values are better (score-like).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.TopKBinaryAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.subset.</span></span><span class="sig-name descname"><span class="pre">TopKBinaryAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#TopKBinaryAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.TopKBinaryAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.BinaryAggregator" title="pyensemblefs.aggregators.base.BinaryAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryAggregator</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.TopKBinaryAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#TopKBinaryAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.TopKBinaryAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.TopKBinaryAggregator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#TopKBinaryAggregator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.TopKBinaryAggregator.fit" title="Link to this definition"></a></dt>
+<dd><p>Default fit: assumes higher aggregated values are better (score-like).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.aggregators.subset.</span></span><span class="sig-name descname"><span class="pre">WeightedMajorityVoteAggregator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#WeightedMajorityVoteAggregator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyensemblefs.aggregators.base.BinaryAggregator" title="pyensemblefs.aggregators.base.BinaryAggregator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryAggregator</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> (<em>np.ndarray</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>top_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#WeightedMajorityVoteAggregator.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator.aggregate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>np.ndarray</em><em> of </em><em>shape</em><em> (</em><em>n_bootstraps</em><em>, </em><em>n_features</em><em>)</em>) – Per-bootstrap results to aggregate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aggregated</strong> – Aggregated vector (scores or ranks).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/aggregators/subset.html#WeightedMajorityVoteAggregator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator.fit" title="Link to this definition"></a></dt>
+<dd><p>Default fit: assumes higher aggregated values are better (score-like).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 </section>

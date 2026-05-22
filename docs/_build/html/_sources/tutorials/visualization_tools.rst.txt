@@ -16,53 +16,10 @@ Example
 
 .. code-block:: python
 
-   import numpy as np
    from pyensemblefs.viz.visualizer import Visualizer
 
-   # Define ranking_scores with feature indices sorted by importance
-   ranking_scores = np.array([2, 5, 1, 7, 3, 0, 4, 6, 8, 9])
-
-   # Optional: define feature names
-   feature_names = [f"feature_{i}" for i in range(10)]
-
-   # Plot consensus ranking
-   Visualizer.consensus_ranking(
-      ranking=ranking_scores,
-      top_k=10,
-      feature_names=feature_names,
-      title="Feature Ranking Consensus")
-
-.. code-block:: python
-   import numpy as np
-   from pyensemblefs.viz.visualizer import Visualizer
-
-   # Define ranking_scores as selection frequencies (values between 0 and 1)
-   ranking_scores = np.array([0.95, 0.87, 0.76, 0.65, 0.54, 0.43, 0.32, 0.21, 0.10, 0.05])
-
-   # Define corresponding feature names
-   feature_names = [f"feature_{i}" for i in range(len(ranking_scores))]
-
-   # Plot frequency distribution
    Visualizer.plot_topk_frequency(
-      feature_names=feature_names,
-      frequencies=ranking_scores,
-      title="Feature Selection Frequency",
-      annotate=True,
-      savepath=None  # Change to "output/ranking.png" to save
-   )
-
-.. code-block:: python
-   import numpy as np
-   from pyensemblefs.viz import ranking
-
-   # Define ranking_scores
-   ranking_scores = np.array([2, 5, 1, 7, 3, 0, 4, 6, 8, 9])
-   feature_names = [f"feature_{i}" for i in range(10)]
-
-   # Plot consensus ranking
-   ranking.consensus_ranking(
-      ranking=ranking_scores,
-      feature_names=feature_names,
-      top_k=10,
-      title="Feature Ranking"
+       feature_names=top_feature_names,
+       frequencies=top_frequencies,
+       title="Top-k selection frequency"
    )

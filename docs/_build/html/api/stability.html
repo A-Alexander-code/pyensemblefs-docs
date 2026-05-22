@@ -170,7 +170,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#subset-methods">Subset Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#ranking-methods">Ranking Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#score-based-methods">Score-Based Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#module-pyensemblefs.fsmethods">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -178,11 +178,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#stability-metrics">Stability Metrics</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Stability Metrics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#high-level-interface-stabilityevaluator">1. High-level interface: StabilityEvaluator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mathematical-definitions-12-core-metrics">2. Mathematical definitions (12 core metrics)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#frequency-based-stability-scores">3. Frequency-based stability scores</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#similarity-matrices-and-expectations">4. Similarity matrices and expectations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adjusted-intersection-based-measures">5. Adjusted intersection-based measures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#other-adjusted-measures-yu-zucknick-sechidis">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mathematical-definitions-12-supported-metrics">2. Mathematical definitions (12 supported metrics)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#similarity-matrices-and-expectations">3. Similarity matrices and expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adjusted-similarity-based-measures-yu-zucknick">4. Adjusted similarity-based measures (Yu, Zucknick)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
@@ -193,7 +191,7 @@
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#training-utilities">Training Utilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#evaluation-metrics">Evaluation Metrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#example-usage">Example Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="estimators.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimators.html#module-pyensemblefs.estimators">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -205,7 +203,7 @@
 <li class="toctree-l4"><a class="reference internal" href="utils.html#plotting-helpers">Plotting Helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.html#global-constants">Global Constants</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.html#api-reference">API Reference</a></li>
-<li class="toctree-l4"><a class="reference internal" href="utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#module-pyensemblefs.utils.consts">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -258,17 +256,13 @@ selection results are under data perturbations (e.g., bootstrapping)
 and across different base selectors.</p>
 <p>At a high level, the components are:</p>
 <ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.stability.evaluator.StabilityEvaluator</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.stability.evaluator.StabilityEvaluator" title="pyensemblefs.stability.evaluator.StabilityEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.stability.evaluator.StabilityEvaluator</span></code></a>
 High-level entry point to compute a set of stability metrics from
 bootstrap feature-selection results.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.stability.base.BaseStability</span></code> and its subclasses
-Simple frequency-based stability scores.</p></li>
-<li><p>Adjusted intersection-based measures
-(<code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.measures_adjusted_intersections</span></code>).</p></li>
 <li><p>Adjusted similarity-aware measures
-(<code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.measures_adjusted_other</span></code>).</p></li>
+(<a class="reference internal" href="#module-pyensemblefs.stability.measures_adjusted_other" title="pyensemblefs.stability.measures_adjusted_other"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.measures_adjusted_other</span></code></a>).</p></li>
 <li><p>Expectation and correction utilities
-(<code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.expectations</span></code>, <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.config</span></code>).</p></li>
+(<a class="reference internal" href="#module-pyensemblefs.stability.expectations" title="pyensemblefs.stability.expectations"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.expectations</span></code></a>, <a class="reference internal" href="#module-pyensemblefs.stability.config" title="pyensemblefs.stability.config"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.config</span></code></a>).</p></li>
 </ul>
 <p>All functions are designed to operate on <strong>collections of feature subsets</strong>
 (e.g., one subset per bootstrap resample) and, optionally, a feature–feature
@@ -282,32 +276,79 @@ similarity matrix.</p>
 <li><p><a class="reference internal" href="#example-computing-all12-stability-metrics" id="id4">Example: computing all12 stability metrics</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#mathematical-definitions-12-core-metrics" id="id5">2. Mathematical definitions (12 core metrics)</a></p>
+<li><p><a class="reference internal" href="#mathematical-definitions-12-supported-metrics" id="id5">2. Mathematical definitions (12 supported metrics)</a></p>
 <ul>
 <li><p><a class="reference internal" href="#uncorrected-measures" id="id6">Uncorrected measures</a></p></li>
 <li><p><a class="reference internal" href="#corrected-for-chance-measures" id="id7">Corrected-for-chance measures</a></p></li>
 <li><p><a class="reference internal" href="#adjusted-similarity-based-measures" id="id8">Adjusted / similarity-based measures</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#frequency-based-stability-scores" id="id9">3. Frequency-based stability scores</a></p>
-<ul>
-<li><p><a class="reference internal" href="#example-frequency-and-entropy-stability" id="id10">Example: frequency and entropy stability</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#similarity-matrices-and-expectations" id="id11">4. Similarity matrices and expectations</a></p></li>
-<li><p><a class="reference internal" href="#adjusted-intersection-based-measures" id="id12">5. Adjusted intersection-based measures</a></p></li>
-<li><p><a class="reference internal" href="#other-adjusted-measures-yu-zucknick-sechidis" id="id13">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a></p></li>
-<li><p><a class="reference internal" href="#summary" id="id14">Summary</a></p></li>
+<li><p><a class="reference internal" href="#similarity-matrices-and-expectations" id="id9">3. Similarity matrices and expectations</a></p></li>
+<li><p><a class="reference internal" href="#adjusted-similarity-based-measures-yu-zucknick" id="id10">4. Adjusted similarity-based measures (Yu, Zucknick)</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id11">Summary</a></p></li>
 </ul>
 </nav>
 <section id="high-level-interface-stabilityevaluator">
 <h2><a class="toc-backref" href="#id1" role="doc-backlink">1. High-level interface: StabilityEvaluator</a><a class="headerlink" href="#high-level-interface-stabilityevaluator" title="Link to this heading"></a></h2>
 <p>The main user-facing class is
-<code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.stability.evaluator.StabilityEvaluator</span></code>. It aggregates
+<a class="reference internal" href="#pyensemblefs.stability.evaluator.StabilityEvaluator" title="pyensemblefs.stability.evaluator.StabilityEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.stability.evaluator.StabilityEvaluator</span></code></a>. It aggregates
 several measures and returns both individual scores and a summary.</p>
+<dl class="py class" id="module-pyensemblefs.stability.evaluator">
+<dt class="sig sig-object py" id="pyensemblefs.stability.evaluator.StabilityEvaluator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.evaluator.</span></span><span class="sig-name descname"><span class="pre">StabilityEvaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all12'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'subset'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/evaluator.html#StabilityEvaluator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.evaluator.StabilityEvaluator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>metrics</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Sequence</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>sim_matrix</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>np.ndarray</em><em>, </em><em>'sp.spmatrix'</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>penalty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyensemblefs.stability.evaluator.StabilityEvaluator.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/evaluator.html#StabilityEvaluator.compute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.evaluator.StabilityEvaluator.compute" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#pyensemblefs.stability.evaluator.StabilityResult" title="pyensemblefs.stability.evaluator.StabilityResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityResult</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>results</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyensemblefs.stability.evaluator.StabilityResult">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.evaluator.</span></span><span class="sig-name descname"><span class="pre">StabilityResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/evaluator.html#StabilityResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.evaluator.StabilityResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
+<li><p><strong>summary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyensemblefs.stability.evaluator.StabilityResult.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></em><a class="headerlink" href="#pyensemblefs.stability.evaluator.StabilityResult.summary" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyensemblefs.stability.evaluator.StabilityResult.values">
+<span class="sig-name descname"><span class="pre">values</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a><span class="pre">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a><span class="pre">,</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a><span class="pre">]</span></em><a class="headerlink" href="#pyensemblefs.stability.evaluator.StabilityResult.values" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <section id="supported-metric-names">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">Supported metric names</a><a class="headerlink" href="#supported-metric-names" title="Link to this heading"></a></h3>
-<p>Internally, <code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityEvaluator</span></code> maintains a registry of metric
+<p>Internally, <a class="reference internal" href="#pyensemblefs.stability.evaluator.StabilityEvaluator" title="pyensemblefs.stability.evaluator.StabilityEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityEvaluator</span></code></a> maintains a registry of metric
 names and their implementations:</p>
 <ul class="simple">
 <li><p><strong>Uncorrected</strong>:</p>
@@ -342,14 +383,13 @@ names and their implementations:</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>Additional adjusted measures such as <code class="docutils literal notranslate"><span class="pre">&quot;sechidis&quot;</span></code> and intersection-based
-indices are available via lower-level modules but are not included in
-<code class="docutils literal notranslate"><span class="pre">all12</span></code> by default.</p>
+<p>These are the 12 stability metrics currently exposed in the public
+high-level evaluator interface.</p>
 </section>
 <section id="input-format">
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">Input format</a><a class="headerlink" href="#input-format" title="Link to this heading"></a></h3>
 <p>For the current implementation, <code class="docutils literal notranslate"><span class="pre">mode=&quot;subset&quot;</span></code> is supported. The
-input to <code class="xref py py-meth docutils literal notranslate"><span class="pre">StabilityEvaluator.compute()</span></code> is:</p>
+input to <a class="reference internal" href="#pyensemblefs.stability.evaluator.StabilityEvaluator.compute" title="pyensemblefs.stability.evaluator.StabilityEvaluator.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StabilityEvaluator.compute()</span></code></a> is:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">results</span></code>: a NumPy array of shape <code class="docutils literal notranslate"><span class="pre">(n_bootstraps,</span> <span class="pre">n_features)</span></code>,
 containing <strong>binary</strong> (0/1 or near-binary) indicators whether each
@@ -386,11 +426,11 @@ feature was selected in each run.</p></li>
 </div>
 </section>
 </section>
-<section id="mathematical-definitions-12-core-metrics">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">2. Mathematical definitions (12 core metrics)</a><a class="headerlink" href="#mathematical-definitions-12-core-metrics" title="Link to this heading"></a></h2>
+<section id="mathematical-definitions-12-supported-metrics">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">2. Mathematical definitions (12 supported metrics)</a><a class="headerlink" href="#mathematical-definitions-12-supported-metrics" title="Link to this heading"></a></h2>
 <p>This section summarizes the 12 stability measures described in the
 pyensemblefs manuscript. All of them are implemented and accessible via
-<code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityEvaluator</span></code>.</p>
+<a class="reference internal" href="#pyensemblefs.stability.evaluator.StabilityEvaluator" title="pyensemblefs.stability.evaluator.StabilityEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityEvaluator</span></code></a>.</p>
 <section id="uncorrected-measures">
 <h3><a class="toc-backref" href="#id6" role="doc-backlink">Uncorrected measures</a><a class="headerlink" href="#uncorrected-measures" title="Link to this heading"></a></h3>
 <p>Let <span class="math notranslate nohighlight">\(V_i\)</span> and <span class="math notranslate nohighlight">\(V_j\)</span> denote two sets of selected features,
@@ -422,7 +462,7 @@ entropy-based stability using feature selection frequencies
 </li>
 <li><p><strong>Davis</strong> (<code class="docutils literal notranslate"><span class="pre">&quot;davis&quot;</span></code>):
 penalized stability correcting for expected overlap, controlled by a
-penalty parameter (exposed in <code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityEvaluator</span></code> as
+penalty parameter (exposed in <a class="reference internal" href="#pyensemblefs.stability.evaluator.StabilityEvaluator" title="pyensemblefs.stability.evaluator.StabilityEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityEvaluator</span></code></a> as
 <code class="docutils literal notranslate"><span class="pre">penalty</span></code>):</p>
 <div class="math notranslate nohighlight">
 \[S_{\text{Davis}} =
@@ -481,123 +521,206 @@ unbiased stability index based on feature selection frequencies
 <section id="adjusted-similarity-based-measures">
 <h3><a class="toc-backref" href="#id8" role="doc-backlink">Adjusted / similarity-based measures</a><a class="headerlink" href="#adjusted-similarity-based-measures" title="Link to this heading"></a></h3>
 <p>The following measures incorporate additional structure via a
-feature–feature similarity matrix (e.g., correlation, RBF, etc.).</p>
+feature-feature similarity matrix (e.g., correlation, RBF, etc.).</p>
 <p>They are implemented in
-<code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.measures_adjusted_other</span></code> and registered
+<a class="reference internal" href="#module-pyensemblefs.stability.measures_adjusted_other" title="pyensemblefs.stability.measures_adjusted_other"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.measures_adjusted_other</span></code></a> and registered
 under:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;yu&quot;</span></code> – Yu-type adjustment</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;zucknick&quot;</span></code> – Zucknick-type adjustment</p></li>
-</ul>
-<p>and a further variant:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;sechidis&quot;</span></code> – Sechidis-type similarity-based stability (not in
-<code class="docutils literal notranslate"><span class="pre">all12</span></code> by default).</p></li>
 </ul>
 <p>All of them operate on the same list of feature subsets and optionally
 use a similarity matrix <code class="docutils literal notranslate"><span class="pre">sim_mat</span></code> defined over the full feature
 universe.</p>
 </section>
 </section>
-<section id="frequency-based-stability-scores">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Frequency-based stability scores</a><a class="headerlink" href="#frequency-based-stability-scores" title="Link to this heading"></a></h2>
-<p>In addition to the 12 core metrics, <code class="docutils literal notranslate"><span class="pre">pyensemblefs.stability</span></code> provides
-simple frequency- and entropy-based summaries, implemented as subclasses
-of <code class="xref py py-class docutils literal notranslate"><span class="pre">pyensemblefs.stability.base.BaseStability</span></code>.</p>
-<section id="example-frequency-and-entropy-stability">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Example: frequency and entropy stability</a><a class="headerlink" href="#example-frequency-and-entropy-stability" title="Link to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.stability.frequency</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">SelectionFrequencyStability</span><span class="p">,</span>
-    <span class="n">EntropyStability</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="c1"># Same toy supports as before</span>
-<span class="n">supports</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<span class="p">])</span>
-
-<span class="n">freq_metric</span> <span class="o">=</span> <span class="n">SelectionFrequencyStability</span><span class="p">()</span>
-<span class="n">ent_metric</span> <span class="o">=</span> <span class="n">EntropyStability</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean selection frequency:&quot;</span><span class="p">,</span> <span class="n">freq_metric</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">supports</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 - mean entropy:&quot;</span><span class="p">,</span>        <span class="n">ent_metric</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">supports</span><span class="p">))</span>
-</pre></div>
-</div>
-</section>
-</section>
 <section id="similarity-matrices-and-expectations">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">4. Similarity matrices and expectations</a><a class="headerlink" href="#similarity-matrices-and-expectations" title="Link to this heading"></a></h2>
-<p>Some adjusted measures (e.g., intersection-based metrics, Yu, Zucknick)
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Similarity matrices and expectations</a><a class="headerlink" href="#similarity-matrices-and-expectations" title="Link to this heading"></a></h2>
+<p>Some adjusted measures (e.g., Yu and Zucknick)
 can take advantage of a feature–feature similarity matrix.</p>
 <p>The following helpers build and normalize similarity matrices:</p>
+<dl class="py function" id="module-pyensemblefs.stability.helpers">
+<dt class="sig sig-object py" id="pyensemblefs.stability.helpers.build_exponential_similarity_from_labels">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.helpers.</span></span><span class="sig-name descname"><span class="pre">build_exponential_similarity_from_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/helpers.html#build_exponential_similarity_from_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.helpers.build_exponential_similarity_from_labels" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+<li><p><strong>base</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.stability.helpers.build_similarity">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.helpers.</span></span><span class="sig-name descname"><span class="pre">build_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'identity'</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/helpers.html#build_similarity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.helpers.build_similarity" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> | <code class="xref py py-class docutils literal notranslate"><span class="pre">coo_matrix</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>sigma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>sparse_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.stability.helpers.col_means_without_zeros">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.helpers.</span></span><span class="sig-name descname"><span class="pre">col_means_without_zeros</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/helpers.html#col_means_without_zeros"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.helpers.col_means_without_zeros" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>M</strong> (<em>coo_matrix</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.stability.helpers.measure_score_helper">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.helpers.</span></span><span class="sig-name descname"><span class="pre">measure_score_helper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measureFun</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/helpers.html#measure_score_helper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.helpers.measure_score_helper" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>measureFun</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.stability.helpers.normalize_similarity">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.helpers.</span></span><span class="sig-name descname"><span class="pre">normalize_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/helpers.html#normalize_similarity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.helpers.normalize_similarity" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> | <code class="xref py py-class docutils literal notranslate"><span class="pre">coo_matrix</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>sim</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a><em> | </em><em>spmatrix</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.stability.helpers.row_means_without_zeros">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.helpers.</span></span><span class="sig-name descname"><span class="pre">row_means_without_zeros</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/helpers.html#row_means_without_zeros"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.helpers.row_means_without_zeros" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>M</strong> (<em>coo_matrix</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.stability.helpers.to_coo_if_needed">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.helpers.</span></span><span class="sig-name descname"><span class="pre">to_coo_if_needed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_coo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/helpers.html#to_coo_if_needed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.helpers.to_coo_if_needed" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">coo_matrix</span></code> | <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>mat</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a><em> | </em><em>spmatrix</em>)</p></li>
+<li><p><strong>force_coo</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <p>Key utilities:</p>
 <ul class="simple">
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">build_similarity()</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.stability.helpers.build_similarity" title="pyensemblefs.stability.helpers.build_similarity"><code class="xref py py-func docutils literal notranslate"><span class="pre">build_similarity()</span></code></a>
 builds identities, correlation-based, absolute-correlation, or RBF
 similarity matrices from data.</p></li>
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">build_exponential_similarity_from_labels()</span></code>
+<li><p><a class="reference internal" href="#pyensemblefs.stability.helpers.build_exponential_similarity_from_labels" title="pyensemblefs.stability.helpers.build_exponential_similarity_from_labels"><code class="xref py py-func docutils literal notranslate"><span class="pre">build_exponential_similarity_from_labels()</span></code></a>
 builds an exponential-decay similarity matrix based on ordered labels
 (e.g., time, position, or feature index).</p></li>
 </ul>
 <p>Expectation-based corrections and Monte Carlo estimation are implemented
 in:</p>
+<dl class="py function" id="module-pyensemblefs.stability.expectations">
+<dt class="sig sig-object py" id="pyensemblefs.stability.expectations.calculate_expectation">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.expectations.</span></span><span class="sig-name descname"><span class="pre">calculate_expectation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">F_all</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/expectations.html#calculate_expectation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.expectations.calculate_expectation" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>F_all</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+<li><p><strong>fun</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.stability.expectations.simulate_expectation">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.expectations.</span></span><span class="sig-name descname"><span class="pre">simulate_expectation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">F_all</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rng</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/expectations.html#simulate_expectation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.expectations.simulate_expectation" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>F_all</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+<li><p><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>fun</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a>)</p></li>
+<li><p><strong>rng</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/random/generator.html#numpy.random.Generator" title="(in NumPy v2.4)"><em>Generator</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.stability.expectations.unadjusted_expectation">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.stability.expectations.</span></span><span class="sig-name descname"><span class="pre">unadjusted_expectation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">F_all</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/stability/expectations.html#unadjusted_expectation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.stability.expectations.unadjusted_expectation" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>F_all</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <p>Configuration defaults for adjusted measures (e.g., choice between
 exact expectation vs. Monte Carlo, thresholds, etc.) are collected in:</p>
 </section>
-<section id="adjusted-intersection-based-measures">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">5. Adjusted intersection-based measures</a><a class="headerlink" href="#adjusted-intersection-based-measures" title="Link to this heading"></a></h2>
+<section id="adjusted-similarity-based-measures-yu-zucknick">
+<span id="module-pyensemblefs.stability.config"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">4. Adjusted similarity-based measures (Yu, Zucknick)</a><a class="headerlink" href="#adjusted-similarity-based-measures-yu-zucknick" title="Link to this heading"></a></h2>
 <p>The module
-<code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.measures_adjusted_intersections</span></code> implements
-a family of intersection-based measures that combine feature subsets
-through a similarity matrix and a threshold.</p>
-<p>Exported metric dictionaries (stabm-like):</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">intersection_count</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">intersection_mean</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">intersection_greedy</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">intersection_mbm</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">intersection_common</span></code></p></li>
-</ul>
-<p>Each object has the structure:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;scoreFun&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">callable</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;maxValueFun&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">callable</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>and is compatible with <code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityEvaluator</span></code>’s internal machinery
-when registered in the metric registry.</p>
-</section>
-<section id="other-adjusted-measures-yu-zucknick-sechidis">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a><a class="headerlink" href="#other-adjusted-measures-yu-zucknick-sechidis" title="Link to this heading"></a></h2>
-<p>The module
-<code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.measures_adjusted_other</span></code> provides three
+<a class="reference internal" href="#module-pyensemblefs.stability.measures_adjusted_other" title="pyensemblefs.stability.measures_adjusted_other"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.stability.measures_adjusted_other</span></code></a> provides the two
 additional adjusted measures that can incorporate feature similarity:</p>
-<p>Registered names (as used in <code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityEvaluator</span></code>):</p>
+<p id="module-pyensemblefs.stability.measures_adjusted_other">Registered names (as used in <code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityEvaluator</span></code>):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;yu&quot;</span></code>       → Yu-type adjusted stability.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;zucknick&quot;</span></code> → Zucknick-type adjusted stability.</p></li>
 </ul>
-<p>and an additional:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;sechidis&quot;</span></code> → Sechidis-type stability (available for custom use).</p></li>
-</ul>
-<p>All three are exposed as dictionaries of the form:</p>
+<p>Both are exposed as dictionaries of the form:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">yu</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;scoreFun&quot;</span><span class="p">:</span> <span class="n">yu</span><span class="p">,</span> <span class="s2">&quot;maxValueFun&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">}</span>
 <span class="n">zucknick</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;scoreFun&quot;</span><span class="p">:</span> <span class="n">zucknick</span><span class="p">,</span> <span class="s2">&quot;maxValueFun&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">}</span>
-<span class="n">sechidis</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;scoreFun&quot;</span><span class="p">:</span> <span class="n">sechidis</span><span class="p">,</span> <span class="s2">&quot;maxValueFun&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>and can be combined with expectation-based corrections to build
 chance-adjusted stability indices.</p>
 </section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Summary</a><a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Summary</a><a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <p>In practice, a typical workflow in <code class="docutils literal notranslate"><span class="pre">pyensemblefs</span></code> is:</p>
 <ol class="arabic simple">
 <li><p>Run an ensemble of feature selectors over <span class="math notranslate nohighlight">\(B\)</span> bootstrap resamples,
@@ -606,7 +729,7 @@ obtaining a binary matrix <code class="docutils literal notranslate"><span class
 <li><p>Instantiate <code class="xref py py-class docutils literal notranslate"><span class="pre">StabilityEvaluator</span></code> with
 <code class="docutils literal notranslate"><span class="pre">metrics=&quot;all12&quot;</span></code> (or a custom list).</p></li>
 <li><p>Optionally provide a feature similarity matrix via <code class="docutils literal notranslate"><span class="pre">sim_matrix</span></code> for
-adjusted measures (Yu, Zucknick, Sechidis, and intersection-based).</p></li>
+adjusted measures (Yu and Zucknick).</p></li>
 <li><p>Call <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code> to obtain a dictionary of stability scores and a
 summary scalar.</p></li>
 </ol>

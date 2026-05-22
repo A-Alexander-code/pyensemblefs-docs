@@ -169,7 +169,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#subset-methods">Subset Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#ranking-methods">Ranking Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#score-based-methods">Score-Based Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#module-pyensemblefs.fsmethods">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -177,11 +177,9 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#stability-metrics">Stability Metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="stability.html">Stability Metrics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="stability.html#high-level-interface-stabilityevaluator">1. High-level interface: StabilityEvaluator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-core-metrics">2. Mathematical definitions (12 core metrics)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#frequency-based-stability-scores">3. Frequency-based stability scores</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">4. Similarity matrices and expectations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-intersection-based-measures">5. Adjusted intersection-based measures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#other-adjusted-measures-yu-zucknick-sechidis">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-supported-metrics">2. Mathematical definitions (12 supported metrics)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">3. Similarity matrices and expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-similarity-based-measures-yu-zucknick">4. Adjusted similarity-based measures (Yu, Zucknick)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stability.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -192,7 +190,7 @@
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#training-utilities">Training Utilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#evaluation-metrics">Evaluation Metrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="estimators.html#example-usage">Example Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="estimators.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimators.html#module-pyensemblefs.estimators">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -204,7 +202,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#plotting-helpers">Plotting Helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#global-constants">Global Constants</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#api-reference">API Reference</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-pyensemblefs.utils.consts">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -267,12 +265,12 @@ the <code class="docutils literal notranslate"><span class="pre">pyensemblefs</s
 <li><p><a class="reference internal" href="#plotting-helpers" id="id3">Plotting Helpers</a></p></li>
 <li><p><a class="reference internal" href="#global-constants" id="id4">Global Constants</a></p></li>
 <li><p><a class="reference internal" href="#api-reference" id="id5">API Reference</a></p></li>
-<li><p><a class="reference internal" href="#submodules" id="id6">Submodules</a></p></li>
+<li><p><a class="reference internal" href="#module-pyensemblefs.utils.consts" id="id6">Submodules</a></p></li>
 </ul>
 </nav>
 <section id="dataset-utilities">
 <h2><a class="toc-backref" href="#id1" role="doc-backlink">Dataset Utilities</a><a class="headerlink" href="#dataset-utilities" title="Link to this heading"></a></h2>
-<p>The module <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.utils.datasets</span></code> provides simple access to a
+<p>The module <a class="reference internal" href="#module-pyensemblefs.utils.datasets" title="pyensemblefs.utils.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.utils.datasets</span></code></a> provides simple access to a
 collection of small UCI-style datasets for demonstration, benchmarking, or
 testing feature selectors.</p>
 <p>Available datasets include:</p>
@@ -285,18 +283,22 @@ testing feature selectors.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">seeds</span></code></p></li>
 </ul>
 <p>The datasets are automatically downloaded from their original UCI repository
-URLs, as defined in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.utils.consts</span></code>.</p>
+URLs, as defined in <a class="reference internal" href="#module-pyensemblefs.utils.consts" title="pyensemblefs.utils.consts"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.utils.consts</span></code></a>.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.utils.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_wine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;wine&quot;</span><span class="p">)</span>
+<span class="c1"># Load wine dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">load_wine</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="saving-results">
 <h2><a class="toc-backref" href="#id2" role="doc-backlink">Saving Results</a><a class="headerlink" href="#saving-results" title="Link to this heading"></a></h2>
-<p>The module <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.utils.loader</span></code> defines helper functions for
+<p>The module <a class="reference internal" href="#module-pyensemblefs.utils.loader" title="pyensemblefs.utils.loader"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.utils.loader</span></code></a> defines helper functions for
 storing experiment results in a persistent CSV file.</p>
 <p>The function <code class="docutils literal notranslate"><span class="pre">save_dataframe_results</span></code> automatically:</p>
 <ol class="arabic simple">
@@ -317,7 +319,7 @@ storing experiment results in a persistent CSV file.</p>
 </section>
 <section id="plotting-helpers">
 <h2><a class="toc-backref" href="#id3" role="doc-backlink">Plotting Helpers</a><a class="headerlink" href="#plotting-helpers" title="Link to this heading"></a></h2>
-<p>The module <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.utils.plotter</span></code> provides a simple utility for
+<p>The module <a class="reference internal" href="#module-pyensemblefs.utils.plotter" title="pyensemblefs.utils.plotter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.utils.plotter</span></code></a> provides a simple utility for
 visualizing confusion matrices using Matplotlib.</p>
 <p><strong>Example</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -332,7 +334,7 @@ visualizing confusion matrices using Matplotlib.</p>
 </section>
 <section id="global-constants">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink">Global Constants</a><a class="headerlink" href="#global-constants" title="Link to this heading"></a></h2>
-<p>The module <code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.utils.consts</span></code> contains:</p>
+<p>The module <a class="reference internal" href="#module-pyensemblefs.utils.consts" title="pyensemblefs.utils.consts"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyensemblefs.utils.consts</span></code></a> contains:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DATASET_REGISTRY</span></code> — a dictionary mapping dataset names to their UCI URLs.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PATH_PROJECT_RESULTS</span></code> — a default output folder for experiment tracking.</p></li>
@@ -350,8 +352,29 @@ the pipeline.</p>
 <h2><a class="toc-backref" href="#id5" role="doc-backlink">API Reference</a><a class="headerlink" href="#api-reference" title="Link to this heading"></a></h2>
 <p>Full automatic documentation for the <code class="docutils literal notranslate"><span class="pre">utils</span></code> package:</p>
 </section>
-<section id="submodules">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Submodules</a><a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+<section id="module-pyensemblefs.utils.consts">
+<span id="submodules"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">Submodules</a><a class="headerlink" href="#module-pyensemblefs.utils.consts" title="Link to this heading"></a></h2>
+<dl class="py function" id="module-pyensemblefs.utils.datasets">
+<dt class="sig sig-object py" id="pyensemblefs.utils.datasets.download_file">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.utils.datasets.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/utils/datasets.html#download_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.utils.datasets.download_file" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.utils.datasets.load_external_dataset">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.utils.datasets.</span></span><span class="sig-name descname"><span class="pre">load_external_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/utils/datasets.html#load_external_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.utils.datasets.load_external_dataset" title="Link to this definition"></a></dt>
+<dd><p>Download and load a dataset by name from the registry</p>
+</dd></dl>
+
+<dl class="py function" id="module-pyensemblefs.utils.loader">
+<dt class="sig sig-object py" id="pyensemblefs.utils.loader.save_dataframe_results">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.utils.loader.</span></span><span class="sig-name descname"><span class="pre">save_dataframe_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_results_current</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/utils/loader.html#save_dataframe_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.utils.loader.save_dataframe_results" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function" id="module-pyensemblefs.utils.plotter">
+<dt class="sig sig-object py" id="pyensemblefs.utils.plotter.plot_confusion_matrix">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.utils.plotter.</span></span><span class="sig-name descname"><span class="pre">plot_confusion_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">matplotlib.pyplot.cm.Blues</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/utils/plotter.html#plot_confusion_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.utils.plotter.plot_confusion_matrix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 </section>
 

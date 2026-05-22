@@ -6,17 +6,15 @@ Minimal example
 
 .. code-block:: python
 
-    import pyensemblefs
-    from pyensemblefs.datasets import load_pima_dataset
+    from sklearn.datasets import load_breast_cancer
+    from pyensemblefs.ensemble.featureselector import FeatureSelector
 
-    # Load dataset
-    df = load_pima_dataset()
+    # Load a dataset
+    X, y = load_breast_cancer(return_X_y=True)
 
-    # Retrieve a pre-defined configuration (e.g., Relief filter)
-    cfg = pyensemblefs.get_config('relief', n_bootrap=100, fnc_aggregation='voting')
+    # Create and fit a simple selector
+    selector = FeatureSelector(method="variance", k=10)
+    selector.fit(X, y)
 
-    # Compute feature scores
-    df_feature_scores = pyensemblefs.compute_scores(cfg, df)
-
-    # Extract the most relevant features
-    df_filtered = pyensemblefs.extract_features(n_max_features=10)
+    # Inspect the selected features
+    print("Selected features:", selector.selected_features_)

@@ -170,7 +170,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#subset-methods">Subset Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#ranking-methods">Ranking Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fsmethods.html#score-based-methods">Score-Based Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fsmethods.html#module-pyensemblefs.fsmethods">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -178,11 +178,9 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#stability-metrics">Stability Metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="stability.html">Stability Metrics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="stability.html#high-level-interface-stabilityevaluator">1. High-level interface: StabilityEvaluator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-core-metrics">2. Mathematical definitions (12 core metrics)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#frequency-based-stability-scores">3. Frequency-based stability scores</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">4. Similarity matrices and expectations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-intersection-based-measures">5. Adjusted intersection-based measures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="stability.html#other-adjusted-measures-yu-zucknick-sechidis">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#mathematical-definitions-12-supported-metrics">2. Mathematical definitions (12 supported metrics)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#similarity-matrices-and-expectations">3. Similarity matrices and expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stability.html#adjusted-similarity-based-measures-yu-zucknick">4. Adjusted similarity-based measures (Yu, Zucknick)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stability.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -193,7 +191,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#training-utilities">Training Utilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#evaluation-metrics">Evaluation Metrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#example-usage">Example Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-pyensemblefs.estimators">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -205,7 +203,7 @@
 <li class="toctree-l4"><a class="reference internal" href="utils.html#plotting-helpers">Plotting Helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.html#global-constants">Global Constants</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.html#api-reference">API Reference</a></li>
-<li class="toctree-l4"><a class="reference internal" href="utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#module-pyensemblefs.utils.consts">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -281,13 +279,42 @@ linking selected features with predictive performance.</p>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#example-usage" id="id8">Example Usage</a></p></li>
-<li><p><a class="reference internal" href="#api-reference" id="id9">API Reference</a></p></li>
+<li><p><a class="reference internal" href="#module-pyensemblefs.estimators" id="id9">API Reference</a></p></li>
 </ul>
 </nav>
 <section id="training-utilities">
 <h2><a class="toc-backref" href="#id1" role="doc-backlink">Training Utilities</a><a class="headerlink" href="#training-utilities" title="Link to this heading"></a></h2>
 <section id="train-fs-clf-with-different-k-features">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">train_fs_clf_with_different_k_features</a><a class="headerlink" href="#train-fs-clf-with-different-k-features" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.estimators.base.train_fs_clf_with_different_k_features">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.estimators.base.</span></span><span class="sig-name descname"><span class="pre">train_fs_clf_with_different_k_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs_method_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbdd_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_estimator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'roc_auc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_ensemble_ranked_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_ensemble</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'voting'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/estimators/base.html#train_fs_clf_with_different_k_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.estimators.base.train_fs_clf_with_different_k_features" title="Link to this definition"></a></dt>
+<dd><p>Train our datasets with different features</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_features</strong> (<em>Pandas dataframe</em>) – We define the features’ matrix we are going to train the classifier with</p></li>
+<li><p><strong>y_label</strong> (<em>Label vector</em>) – We define the label vector to train the classifier</p></li>
+<li><p><strong>fs_method_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – We define the feature selection method we are going to use</p></li>
+<li><p><strong>bbdd_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Name of bbdd</p></li>
+<li><p><strong>estimator_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – We define the classifier we want to use</p></li>
+<li><p><strong>as_frame</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – Return dataframe</p></li>
+<li><p><strong>scoring_estimator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – scoring for grid_search</p></li>
+<li><p><strong>df_ensemble_ranked_features</strong> (<em>pd.DataFrame</em>) – Dataframe with ensemble results</p></li>
+<li><p><strong>type_ensemble</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>df_metrics</strong> (<em>Pandas dataframe</em>) – Returns a dataframe with the metrics for each k feature of the dataset.</p></li>
+<li><p><strong>df_feature_ranked_scores</strong> (<em>Pandas dataframe</em>) – Returns a matrix containing the scores (relevances) for each feature.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
 <p>This function automates the evaluation of a classifier over a full range of
 subset sizes, using ranked features from either:</p>
 <ul class="simple">
@@ -299,6 +326,11 @@ analysis of <em>predictive performance vs. number of features</em>.</p>
 </section>
 <section id="select-optimal-features-ensemblefs">
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">select_optimal_features_ensemblefs</a><a class="headerlink" href="#select-optimal-features-ensemblefs" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.estimators.base.select_optimal_features_ensemblefs">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.estimators.base.</span></span><span class="sig-name descname"><span class="pre">select_optimal_features_ensemblefs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_voting_sorted</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_img_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/estimators/base.html#select_optimal_features_ensemblefs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.estimators.base.select_optimal_features_ensemblefs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <p>This function determines the optimal number of selected features using an
 ensemble-produced ranking.
 It evaluates percentages of the ranked list (10%–100%), identifying the
@@ -311,10 +343,33 @@ subset yielding the highest score according to a chosen metric.</p>
 multiclass classifiers.</p>
 <section id="get-metric-classification">
 <h3><a class="toc-backref" href="#id5" role="doc-backlink">get_metric_classification</a><a class="headerlink" href="#get-metric-classification" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.estimators.evaluator.get_metric_classification">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.estimators.evaluator.</span></span><span class="sig-name descname"><span class="pre">get_metric_classification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scoring_metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'macro'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/estimators/evaluator.html#get_metric_classification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.estimators.evaluator.get_metric_classification" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <p>Maps requested scoring metrics to their binary or multiclass variants.</p>
 </section>
 <section id="compute-classification-prestations">
 <h3><a class="toc-backref" href="#id6" role="doc-backlink">compute_classification_prestations</a><a class="headerlink" href="#compute-classification-prestations" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.estimators.evaluator.compute_classification_prestations">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.estimators.evaluator.</span></span><span class="sig-name descname"><span class="pre">compute_classification_prestations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred_prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_confusion_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/estimators/evaluator.html#compute_classification_prestations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.estimators.evaluator.compute_classification_prestations" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type">(<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>)</span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>array</em>)</p></li>
+<li><p><strong>y_pred</strong> (<em>array</em>)</p></li>
+<li><p><strong>y_pred_prob</strong> (<em>array</em>)</p></li>
+<li><p><strong>class_names</strong> (<em>array</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <p>Computes a dictionary of classification metrics, including:</p>
 <ul class="simple">
 <li><p>accuracy</p></li>
@@ -327,6 +382,16 @@ multiclass classifiers.</p>
 </section>
 <section id="compute-multiclass-metrics">
 <h3><a class="toc-backref" href="#id7" role="doc-backlink">compute_multiclass_metrics</a><a class="headerlink" href="#compute-multiclass-metrics" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyensemblefs.estimators.evaluator.compute_multiclass_metrics">
+<span class="sig-prename descclassname"><span class="pre">pyensemblefs.estimators.evaluator.</span></span><span class="sig-name descname"><span class="pre">compute_multiclass_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred_proba</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'micro'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyensemblefs/estimators/evaluator.html#compute_multiclass_metrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyensemblefs.estimators.evaluator.compute_multiclass_metrics" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 <section id="example-usage">
@@ -335,34 +400,46 @@ multiclass classifiers.</p>
 stability analysis:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.ensemble.featureselector</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureSelector</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.estimators.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_fs_clf_with_different_k_features</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_breast_cancer_dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.fsmethods.factory</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_fs_method</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.ensemble.bootstrapper</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bootstrapper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.aggregators.rank</span><span class="w"> </span><span class="kn">import</span> <span class="n">MeanRankAggregator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyensemblefs.ensemble.featureselector</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnsembleFeatureSelector</span>
 
 <span class="c1"># Load data</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_breast_cancer_dataset</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
 
-<span class="c1"># Feature selection</span>
-<span class="n">fs</span> <span class="o">=</span> <span class="n">FeatureSelector</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;variance&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">fs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">df_selected</span><span class="p">,</span> <span class="n">df_scores</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">extract_features</span><span class="p">()</span>
+<span class="c1"># Create the feature selection pipeline manually</span>
+<span class="c1"># 1. Create a base selector</span>
+<span class="n">base_selector</span> <span class="o">=</span> <span class="n">get_fs_method</span><span class="p">(</span><span class="s2">&quot;variance&quot;</span><span class="p">)</span>
 
-<span class="c1"># Evaluate classifier performance across k=1...p</span>
-<span class="n">metrics</span><span class="p">,</span> <span class="n">ranked_scores</span> <span class="o">=</span> <span class="n">train_fs_clf_with_different_k_features</span><span class="p">(</span>
-    <span class="n">df_features</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
-    <span class="n">y_label</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-    <span class="n">fs_method_name</span><span class="o">=</span><span class="s2">&quot;variance&quot;</span><span class="p">,</span>
-    <span class="n">bbdd_name</span><span class="o">=</span><span class="s2">&quot;my_data&quot;</span><span class="p">,</span>
-    <span class="n">estimator_name</span><span class="o">=</span><span class="s2">&quot;dt&quot;</span><span class="p">,</span>
-    <span class="n">scoring_estimator</span><span class="o">=</span><span class="s2">&quot;roc_auc&quot;</span>
+<span class="c1"># 2. Create bootstrapper with the selector</span>
+<span class="n">bootstrapper</span> <span class="o">=</span> <span class="n">Bootstrapper</span><span class="p">(</span><span class="n">fs_method</span><span class="o">=</span><span class="n">base_selector</span><span class="p">,</span> <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># 3. Create aggregator (concrete implementation)</span>
+<span class="n">aggregator</span> <span class="o">=</span> <span class="n">MeanRankAggregator</span><span class="p">()</span>
+
+<span class="c1"># 4. Combine them with EnsembleFeatureSelector</span>
+<span class="n">ensemble_fs</span> <span class="o">=</span> <span class="n">EnsembleFeatureSelector</span><span class="p">(</span>
+   <span class="n">bootstrapper</span><span class="o">=</span><span class="n">bootstrapper</span><span class="p">,</span>
+   <span class="n">aggregator</span><span class="o">=</span><span class="n">aggregator</span><span class="p">,</span>
+   <span class="n">k</span><span class="o">=</span><span class="mi">20</span>  <span class="c1"># Select top 20 features</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="c1"># Fit and transform</span>
+<span class="n">ensemble_fs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">X_selected</span> <span class="o">=</span> <span class="n">ensemble_fs</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original shape: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected shape: </span><span class="si">{</span><span class="n">X_selected</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected features: </span><span class="si">{</span><span class="n">X_selected</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="api-reference">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">API Reference</a><a class="headerlink" href="#api-reference" title="Link to this heading"></a></h2>
+<section id="module-pyensemblefs.estimators">
+<span id="api-reference"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">API Reference</a><a class="headerlink" href="#module-pyensemblefs.estimators" title="Link to this heading"></a></h2>
 </section>
 </section>
 

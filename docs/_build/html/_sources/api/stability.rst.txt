@@ -12,12 +12,6 @@ At a high level, the components are:
   High-level entry point to compute a set of stability metrics from
   bootstrap feature-selection results.
 
-- :class:`pyensemblefs.stability.base.BaseStability` and its subclasses  
-  Simple frequency-based stability scores.
-
-- Adjusted intersection-based measures  
-  (:mod:`pyensemblefs.stability.measures_adjusted_intersections`).
-
 - Adjusted similarity-aware measures  
   (:mod:`pyensemblefs.stability.measures_adjusted_other`).
 
@@ -82,9 +76,8 @@ The convenience string ``metrics="all12"`` expands to all of the above:
        "lustgarten", "phi", "kappa", "nogueira", "yu", "zucknick",
    ]
 
-Additional adjusted measures such as ``"sechidis"`` and intersection-based
-indices are available via lower-level modules but are not included in
-``all12`` by default.
+These are the 12 stability metrics currently exposed in the public
+high-level evaluator interface.
 
 
 Input format
@@ -130,8 +123,8 @@ Example: computing all12 stability metrics
    print("Summary stability:", result.summary)
 
 
-2. Mathematical definitions (12 core metrics)
----------------------------------------------
+2. Mathematical definitions (12 supported metrics)
+--------------------------------------------------
 
 This section summarizes the 12 stability measures described in the
 pyensemblefs manuscript. All of them are implemented and accessible via
@@ -248,7 +241,7 @@ Adjusted / similarity-based measures
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following measures incorporate additional structure via a
-feature–feature similarity matrix (e.g., correlation, RBF, etc.).
+feature-feature similarity matrix (e.g., correlation, RBF, etc.).
 
 They are implemented in
 :mod:`pyensemblefs.stability.measures_adjusted_other` and registered
@@ -257,64 +250,15 @@ under:
 - ``"yu"`` – Yu-type adjustment
 - ``"zucknick"`` – Zucknick-type adjustment
 
-and a further variant:
-
-- ``"sechidis"`` – Sechidis-type similarity-based stability (not in
-  ``all12`` by default).
-
 All of them operate on the same list of feature subsets and optionally
 use a similarity matrix ``sim_mat`` defined over the full feature
 universe.
 
 
-3. Frequency-based stability scores
------------------------------------
-
-In addition to the 12 core metrics, ``pyensemblefs.stability`` provides
-simple frequency- and entropy-based summaries, implemented as subclasses
-of :class:`pyensemblefs.stability.base.BaseStability`.
-
-.. automodule:: pyensemblefs.stability.base
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-.. automodule:: pyensemblefs.stability.frequency
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Example: frequency and entropy stability
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: python
-
-   import numpy as np
-   from pyensemblefs.stability.frequency import (
-       SelectionFrequencyStability,
-       EntropyStability,
-   )
-
-   # Same toy supports as before
-   supports = np.array([
-       [1, 1, 0, 0, 1, 0, 0, 0],
-       [1, 0, 1, 0, 1, 0, 0, 0],
-       [1, 1, 0, 0, 1, 0, 0, 0],
-       [0, 1, 1, 0, 1, 0, 0, 0],
-       [1, 1, 0, 0, 1, 0, 0, 0],
-   ])
-
-   freq_metric = SelectionFrequencyStability()
-   ent_metric = EntropyStability()
-
-   print("Mean selection frequency:", freq_metric.compute(supports))
-   print("1 - mean entropy:",        ent_metric.compute(supports))
-
-
-4. Similarity matrices and expectations
+3. Similarity matrices and expectations
 ---------------------------------------
 
-Some adjusted measures (e.g., intersection-based metrics, Yu, Zucknick)
+Some adjusted measures (e.g., Yu and Zucknick)
 can take advantage of a feature–feature similarity matrix.
 
 The following helpers build and normalize similarity matrices:
@@ -351,45 +295,11 @@ exact expectation vs. Monte Carlo, thresholds, etc.) are collected in:
    :show-inheritance:
 
 
-5. Adjusted intersection-based measures
----------------------------------------
+4. Adjusted similarity-based measures (Yu, Zucknick)
+----------------------------------------------------
 
 The module
-:mod:`pyensemblefs.stability.measures_adjusted_intersections` implements
-a family of intersection-based measures that combine feature subsets
-through a similarity matrix and a threshold.
-
-.. automodule:: pyensemblefs.stability.measures_adjusted_intersections
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Exported metric dictionaries (stabm-like):
-
-- ``intersection_count``
-- ``intersection_mean``
-- ``intersection_greedy``
-- ``intersection_mbm``
-- ``intersection_common``
-
-Each object has the structure:
-
-.. code-block:: python
-
-   {
-       "scoreFun": <callable>,
-       "maxValueFun": <callable>,
-   }
-
-and is compatible with :class:`StabilityEvaluator`’s internal machinery
-when registered in the metric registry.
-
-
-6. Other adjusted measures (Yu, Zucknick, Sechidis)
----------------------------------------------------
-
-The module
-:mod:`pyensemblefs.stability.measures_adjusted_other` provides three
+:mod:`pyensemblefs.stability.measures_adjusted_other` provides the two
 additional adjusted measures that can incorporate feature similarity:
 
 .. automodule:: pyensemblefs.stability.measures_adjusted_other
@@ -402,17 +312,12 @@ Registered names (as used in :class:`StabilityEvaluator`):
 - ``"yu"``       → Yu-type adjusted stability.
 - ``"zucknick"`` → Zucknick-type adjusted stability.
 
-and an additional:
-
-- ``"sechidis"`` → Sechidis-type stability (available for custom use).
-
-All three are exposed as dictionaries of the form:
+Both are exposed as dictionaries of the form:
 
 .. code-block:: python
 
    yu = {"scoreFun": yu, "maxValueFun": ...}
    zucknick = {"scoreFun": zucknick, "maxValueFun": ...}
-   sechidis = {"scoreFun": sechidis, "maxValueFun": ...}
 
 and can be combined with expectation-based corrections to build
 chance-adjusted stability indices.
@@ -429,7 +334,7 @@ In practice, a typical workflow in ``pyensemblefs`` is:
 2. Instantiate :class:`StabilityEvaluator` with
    ``metrics="all12"`` (or a custom list).
 3. Optionally provide a feature similarity matrix via ``sim_matrix`` for
-   adjusted measures (Yu, Zucknick, Sechidis, and intersection-based).
+   adjusted measures (Yu and Zucknick).
 4. Call :meth:`compute` to obtain a dictionary of stability scores and a
    summary scalar.
 

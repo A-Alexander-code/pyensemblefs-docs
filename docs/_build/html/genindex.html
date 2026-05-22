@@ -166,7 +166,7 @@
 <li class="toctree-l4"><a class="reference internal" href="api/fsmethods.html#subset-methods">Subset Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/fsmethods.html#ranking-methods">Ranking Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/fsmethods.html#score-based-methods">Score-Based Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/fsmethods.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/fsmethods.html#module-pyensemblefs.fsmethods">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -174,11 +174,9 @@
 <li class="toctree-l2"><a class="reference internal" href="api/index.html#stability-metrics">Stability Metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/stability.html">Stability Metrics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api/stability.html#high-level-interface-stabilityevaluator">1. High-level interface: StabilityEvaluator</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/stability.html#mathematical-definitions-12-core-metrics">2. Mathematical definitions (12 core metrics)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/stability.html#frequency-based-stability-scores">3. Frequency-based stability scores</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/stability.html#similarity-matrices-and-expectations">4. Similarity matrices and expectations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/stability.html#adjusted-intersection-based-measures">5. Adjusted intersection-based measures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/stability.html#other-adjusted-measures-yu-zucknick-sechidis">6. Other adjusted measures (Yu, Zucknick, Sechidis)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/stability.html#mathematical-definitions-12-supported-metrics">2. Mathematical definitions (12 supported metrics)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/stability.html#similarity-matrices-and-expectations">3. Similarity matrices and expectations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/stability.html#adjusted-similarity-based-measures-yu-zucknick">4. Adjusted similarity-based measures (Yu, Zucknick)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/stability.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -189,7 +187,7 @@
 <li class="toctree-l4"><a class="reference internal" href="api/estimators.html#training-utilities">Training Utilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/estimators.html#evaluation-metrics">Evaluation Metrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/estimators.html#example-usage">Example Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/estimators.html#api-reference">API Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/estimators.html#module-pyensemblefs.estimators">API Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -201,7 +199,7 @@
 <li class="toctree-l4"><a class="reference internal" href="api/utils.html#plotting-helpers">Plotting Helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/utils.html#global-constants">Global Constants</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/utils.html#api-reference">API Reference</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/utils.html#module-pyensemblefs.utils.consts">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -248,8 +246,585 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
  
 </div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.BaseAggregator.aggregate">aggregate() (pyensemblefs.aggregators.base.BaseAggregator method)</a>
+
+      <ul>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.BordaFromRanksAggregator.aggregate">(pyensemblefs.aggregators.rank.BordaFromRanksAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.ConsensusRankAggregator.aggregate">(pyensemblefs.aggregators.rank.ConsensusRankAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.GeometricMeanRankAggregator.aggregate">(pyensemblefs.aggregators.rank.GeometricMeanRankAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.MeanRankAggregator.aggregate">(pyensemblefs.aggregators.rank.MeanRankAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.MedianRankAggregator.aggregate">(pyensemblefs.aggregators.rank.MedianRankAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.RankProductAggregator.aggregate">(pyensemblefs.aggregators.rank.RankProductAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator.aggregate">(pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator.aggregate">(pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.BordaFromScoresAggregator.aggregate">(pyensemblefs.aggregators.score.BordaFromScoresAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.GeometricMeanAggregator.aggregate">(pyensemblefs.aggregators.score.GeometricMeanAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.MeanAggregator.aggregate">(pyensemblefs.aggregators.score.MeanAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.MedianAggregator.aggregate">(pyensemblefs.aggregators.score.MedianAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.RankProductAggregator.aggregate">(pyensemblefs.aggregators.score.RankProductAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.SelectionFrequencyAggregator.aggregate">(pyensemblefs.aggregators.score.SelectionFrequencyAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.SumAggregator.aggregate">(pyensemblefs.aggregators.score.SumAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.TrimmedMeanAggregator.aggregate">(pyensemblefs.aggregators.score.TrimmedMeanAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.WeightedScoreAggregator.aggregate">(pyensemblefs.aggregators.score.WeightedScoreAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.WinsorizedMeanAggregator.aggregate">(pyensemblefs.aggregators.score.WinsorizedMeanAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator.aggregate">(pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator.aggregate">(pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.MajorityVoteAggregator.aggregate">(pyensemblefs.aggregators.subset.MajorityVoteAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.QuantileThresholdAggregator.aggregate">(pyensemblefs.aggregators.subset.QuantileThresholdAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.ThresholdAggregator.aggregate">(pyensemblefs.aggregators.subset.ThresholdAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.TopKBinaryAggregator.aggregate">(pyensemblefs.aggregators.subset.TopKBinaryAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator.aggregate">(pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator method)</a>
+</li>
+        <li><a href="api/ensemble.html#pyensemblefs.ensemble.bootstrapper.Bootstrapper.aggregate">(pyensemblefs.ensemble.bootstrapper.Bootstrapper method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.BaseAggregator">BaseAggregator (class in pyensemblefs.aggregators.base)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.BinaryAggregator">BinaryAggregator (class in pyensemblefs.aggregators.base)</a>
+</li>
+      <li><a href="api/ensemble.html#pyensemblefs.ensemble.bootstrapper.Bootstrapper">Bootstrapper (class in pyensemblefs.ensemble.bootstrapper)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.BordaFromRanksAggregator">BordaFromRanksAggregator (class in pyensemblefs.aggregators.rank)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.BordaFromScoresAggregator">BordaFromScoresAggregator (class in pyensemblefs.aggregators.score)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.helpers.build_exponential_similarity_from_labels">build_exponential_similarity_from_labels() (in module pyensemblefs.stability.helpers)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.helpers.build_similarity">build_similarity() (in module pyensemblefs.stability.helpers)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stability.html#pyensemblefs.stability.expectations.calculate_expectation">calculate_expectation() (in module pyensemblefs.stability.expectations)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator">ClopperPearsonCIThresholdAggregator (class in pyensemblefs.aggregators.subset)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.helpers.col_means_without_zeros">col_means_without_zeros() (in module pyensemblefs.stability.helpers)</a>
+</li>
+      <li><a href="api/viz.html#pyensemblefs.viz.comparison.compare_aggregators_heatmap">compare_aggregators_heatmap() (in module pyensemblefs.viz.comparison)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.evaluator.StabilityEvaluator.compute">compute() (pyensemblefs.stability.evaluator.StabilityEvaluator method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/estimators.html#pyensemblefs.estimators.evaluator.compute_classification_prestations">compute_classification_prestations() (in module pyensemblefs.estimators.evaluator)</a>
+</li>
+      <li><a href="api/estimators.html#pyensemblefs.estimators.evaluator.compute_multiclass_metrics">compute_multiclass_metrics() (in module pyensemblefs.estimators.evaluator)</a>
+</li>
+      <li><a href="api/viz.html#pyensemblefs.viz.ranking.consensus_ranking">consensus_ranking() (in module pyensemblefs.viz.ranking)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.ConsensusRankAggregator">ConsensusRankAggregator (class in pyensemblefs.aggregators.rank)</a>
+</li>
+      <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.CorrelationScore">CorrelationScore (class in pyensemblefs.fsmethods)</a>
+</li>
+      <li><a href="api/viz.html#pyensemblefs.viz.comparison.cumulative_agreement_plot">cumulative_agreement_plot() (in module pyensemblefs.viz.comparison)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/utils.html#pyensemblefs.utils.datasets.download_file">download_file() (in module pyensemblefs.utils.datasets)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/ensemble.html#pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector">EnsembleFeatureSelector (class in pyensemblefs.ensemble.featureselector)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator">FDRControlledFrequencyAggregator (class in pyensemblefs.aggregators.subset)</a>
+</li>
+      <li><a href="api/viz.html#pyensemblefs.viz.stability.feature_frequency">feature_frequency() (in module pyensemblefs.viz.stability)</a>
+</li>
+      <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.FisherScore">FisherScore (class in pyensemblefs.fsmethods)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.BaseAggregator.fit">fit() (pyensemblefs.aggregators.base.BaseAggregator method)</a>
+
+      <ul>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.BinaryAggregator.fit">(pyensemblefs.aggregators.base.BinaryAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.RankAggregator.fit">(pyensemblefs.aggregators.base.RankAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator.fit">(pyensemblefs.aggregators.subset.ClopperPearsonCIThresholdAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator.fit">(pyensemblefs.aggregators.subset.FDRControlledFrequencyAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.MajorityVoteAggregator.fit">(pyensemblefs.aggregators.subset.MajorityVoteAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.QuantileThresholdAggregator.fit">(pyensemblefs.aggregators.subset.QuantileThresholdAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.ThresholdAggregator.fit">(pyensemblefs.aggregators.subset.ThresholdAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.TopKBinaryAggregator.fit">(pyensemblefs.aggregators.subset.TopKBinaryAggregator method)</a>
+</li>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator.fit">(pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator method)</a>
+</li>
+        <li><a href="api/ensemble.html#pyensemblefs.ensemble.bootstrapper.Bootstrapper.fit">(pyensemblefs.ensemble.bootstrapper.Bootstrapper method)</a>
+</li>
+        <li><a href="api/ensemble.html#pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector.fit">(pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector method)</a>
+</li>
+        <li><a href="api/ensemble.html#pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper.fit">(pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper method)</a>
+</li>
+        <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.CorrelationScore.fit">(pyensemblefs.fsmethods.CorrelationScore method)</a>
+</li>
+        <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.FisherScore.fit">(pyensemblefs.fsmethods.FisherScore method)</a>
+</li>
+        <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.FSMethod.fit">(pyensemblefs.fsmethods.FSMethod method)</a>
+</li>
+        <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.MIScore.fit">(pyensemblefs.fsmethods.MIScore method)</a>
+</li>
+        <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.RankingFilter.fit">(pyensemblefs.fsmethods.RankingFilter method)</a>
+</li>
+        <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.SubsetFilter.fit">(pyensemblefs.fsmethods.SubsetFilter method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.FSMethod">FSMethod (class in pyensemblefs.fsmethods)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.GeometricMeanAggregator">GeometricMeanAggregator (class in pyensemblefs.aggregators.score)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.GeometricMeanRankAggregator">GeometricMeanRankAggregator (class in pyensemblefs.aggregators.rank)</a>
+</li>
+      <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.FSMethod.get_feature_importances">get_feature_importances() (pyensemblefs.fsmethods.FSMethod method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/estimators.html#pyensemblefs.estimators.evaluator.get_metric_classification">get_metric_classification() (in module pyensemblefs.estimators.evaluator)</a>
+</li>
+      <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.FSMethod.get_ranking">get_ranking() (pyensemblefs.fsmethods.FSMethod method)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.BaseAggregator.get_support">get_support() (pyensemblefs.aggregators.base.BaseAggregator method)</a>
+
+      <ul>
+        <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.FSMethod.get_support">(pyensemblefs.fsmethods.FSMethod method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/utils.html#pyensemblefs.utils.datasets.load_external_dataset">load_external_dataset() (in module pyensemblefs.utils.datasets)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.MajorityVoteAggregator">MajorityVoteAggregator (class in pyensemblefs.aggregators.subset)</a>
+</li>
+      <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.make_fs">make_fs() (in module pyensemblefs.fsmethods)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.MeanAggregator">MeanAggregator (class in pyensemblefs.aggregators.score)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.MeanRankAggregator">MeanRankAggregator (class in pyensemblefs.aggregators.rank)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.helpers.measure_score_helper">measure_score_helper() (in module pyensemblefs.stability.helpers)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.MedianAggregator">MedianAggregator (class in pyensemblefs.aggregators.score)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.MedianRankAggregator">MedianRankAggregator (class in pyensemblefs.aggregators.rank)</a>
+</li>
+      <li><a href="api/ensemble.html#pyensemblefs.ensemble.metabootstrapper.MetaBootstrapper">MetaBootstrapper (class in pyensemblefs.ensemble.metabootstrapper)</a>
+</li>
+      <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.MIScore">MIScore (class in pyensemblefs.fsmethods)</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="api/aggregators.html#module-pyensemblefs.aggregators.base">pyensemblefs.aggregators.base</a>
+</li>
+        <li><a href="api/aggregators.html#module-pyensemblefs.aggregators.rank">pyensemblefs.aggregators.rank</a>
+</li>
+        <li><a href="api/aggregators.html#module-pyensemblefs.aggregators.score">pyensemblefs.aggregators.score</a>
+</li>
+        <li><a href="api/aggregators.html#module-pyensemblefs.aggregators.subset">pyensemblefs.aggregators.subset</a>
+</li>
+        <li><a href="api/ensemble.html#module-pyensemblefs.ensemble.bootstrapper">pyensemblefs.ensemble.bootstrapper</a>
+</li>
+        <li><a href="api/ensemble.html#module-pyensemblefs.ensemble.featureselector">pyensemblefs.ensemble.featureselector</a>
+</li>
+        <li><a href="api/ensemble.html#module-pyensemblefs.ensemble.metabootstrapper">pyensemblefs.ensemble.metabootstrapper</a>
+</li>
+        <li><a href="api/estimators.html#module-pyensemblefs.estimators">pyensemblefs.estimators</a>
+</li>
+        <li><a href="api/fsmethods.html#module-pyensemblefs.fsmethods">pyensemblefs.fsmethods</a>
+</li>
+        <li><a href="api/stability.html#module-pyensemblefs.stability.config">pyensemblefs.stability.config</a>
+</li>
+        <li><a href="api/stability.html#module-pyensemblefs.stability.evaluator">pyensemblefs.stability.evaluator</a>
+</li>
+        <li><a href="api/stability.html#module-pyensemblefs.stability.expectations">pyensemblefs.stability.expectations</a>
+</li>
+        <li><a href="api/stability.html#module-pyensemblefs.stability.helpers">pyensemblefs.stability.helpers</a>
+</li>
+        <li><a href="api/stability.html#module-pyensemblefs.stability.measures_adjusted_other">pyensemblefs.stability.measures_adjusted_other</a>
+</li>
+        <li><a href="api/utils.html#module-pyensemblefs.utils.consts">pyensemblefs.utils.consts</a>
+</li>
+        <li><a href="api/utils.html#module-pyensemblefs.utils.datasets">pyensemblefs.utils.datasets</a>
+</li>
+        <li><a href="api/utils.html#module-pyensemblefs.utils.loader">pyensemblefs.utils.loader</a>
+</li>
+        <li><a href="api/utils.html#module-pyensemblefs.utils.plotter">pyensemblefs.utils.plotter</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stability.html#pyensemblefs.stability.helpers.normalize_similarity">normalize_similarity() (in module pyensemblefs.stability.helpers)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/viz.html#pyensemblefs.viz.comparison.pairwise_cumulative_agreement">pairwise_cumulative_agreement() (in module pyensemblefs.viz.comparison)</a>
+</li>
+      <li><a href="api/utils.html#pyensemblefs.utils.plotter.plot_confusion_matrix">plot_confusion_matrix() (in module pyensemblefs.utils.plotter)</a>
+</li>
+      <li><a href="api/viz.html#pyensemblefs.viz.ranking.plot_topk_frequency">plot_topk_frequency() (in module pyensemblefs.viz.ranking)</a>
+</li>
+      <li>
+    pyensemblefs.aggregators.base
+
+      <ul>
+        <li><a href="api/aggregators.html#module-pyensemblefs.aggregators.base">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.aggregators.rank
+
+      <ul>
+        <li><a href="api/aggregators.html#module-pyensemblefs.aggregators.rank">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.aggregators.score
+
+      <ul>
+        <li><a href="api/aggregators.html#module-pyensemblefs.aggregators.score">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.aggregators.subset
+
+      <ul>
+        <li><a href="api/aggregators.html#module-pyensemblefs.aggregators.subset">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.ensemble.bootstrapper
+
+      <ul>
+        <li><a href="api/ensemble.html#module-pyensemblefs.ensemble.bootstrapper">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.ensemble.featureselector
+
+      <ul>
+        <li><a href="api/ensemble.html#module-pyensemblefs.ensemble.featureselector">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.ensemble.metabootstrapper
+
+      <ul>
+        <li><a href="api/ensemble.html#module-pyensemblefs.ensemble.metabootstrapper">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.estimators
+
+      <ul>
+        <li><a href="api/estimators.html#module-pyensemblefs.estimators">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    pyensemblefs.fsmethods
+
+      <ul>
+        <li><a href="api/fsmethods.html#module-pyensemblefs.fsmethods">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.stability.config
+
+      <ul>
+        <li><a href="api/stability.html#module-pyensemblefs.stability.config">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.stability.evaluator
+
+      <ul>
+        <li><a href="api/stability.html#module-pyensemblefs.stability.evaluator">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.stability.expectations
+
+      <ul>
+        <li><a href="api/stability.html#module-pyensemblefs.stability.expectations">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.stability.helpers
+
+      <ul>
+        <li><a href="api/stability.html#module-pyensemblefs.stability.helpers">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.stability.measures_adjusted_other
+
+      <ul>
+        <li><a href="api/stability.html#module-pyensemblefs.stability.measures_adjusted_other">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.utils.consts
+
+      <ul>
+        <li><a href="api/utils.html#module-pyensemblefs.utils.consts">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.utils.datasets
+
+      <ul>
+        <li><a href="api/utils.html#module-pyensemblefs.utils.datasets">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.utils.loader
+
+      <ul>
+        <li><a href="api/utils.html#module-pyensemblefs.utils.loader">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyensemblefs.utils.plotter
+
+      <ul>
+        <li><a href="api/utils.html#module-pyensemblefs.utils.plotter">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.QuantileThresholdAggregator">QuantileThresholdAggregator (class in pyensemblefs.aggregators.subset)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.BaseAggregator.rank_">rank_ (pyensemblefs.aggregators.base.BaseAggregator property)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.RankAggregator">RankAggregator (class in pyensemblefs.aggregators.base)</a>
+</li>
+      <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.RankingFilter">RankingFilter (class in pyensemblefs.fsmethods)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.RankProductAggregator">RankProductAggregator (class in pyensemblefs.aggregators.rank)</a>
+
+      <ul>
+        <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.RankProductAggregator">(class in pyensemblefs.aggregators.score)</a>
+</li>
+      </ul></li>
+      <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.register_fs">register_fs() (in module pyensemblefs.fsmethods)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.helpers.row_means_without_zeros">row_means_without_zeros() (in module pyensemblefs.stability.helpers)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/utils.html#pyensemblefs.utils.loader.save_dataframe_results">save_dataframe_results() (in module pyensemblefs.utils.loader)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.ScoreAggregator">ScoreAggregator (class in pyensemblefs.aggregators.base)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.BaseAggregator.scores_">scores_ (pyensemblefs.aggregators.base.BaseAggregator property)</a>
+</li>
+      <li><a href="api/estimators.html#pyensemblefs.estimators.base.select_optimal_features_ensemblefs">select_optimal_features_ensemblefs() (in module pyensemblefs.estimators.base)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.SelectionFrequencyAggregator">SelectionFrequencyAggregator (class in pyensemblefs.aggregators.score)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.base.BaseAggregator.set_top_k">set_top_k() (pyensemblefs.aggregators.base.BaseAggregator method)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.expectations.simulate_expectation">simulate_expectation() (in module pyensemblefs.stability.expectations)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/viz.html#pyensemblefs.viz.stability.stability_heatmap">stability_heatmap() (in module pyensemblefs.viz.stability)</a>
+</li>
+      <li><a href="api/viz.html#pyensemblefs.viz.stability.stability_over_bootstraps">stability_over_bootstraps() (in module pyensemblefs.viz.stability)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.evaluator.StabilityEvaluator">StabilityEvaluator (class in pyensemblefs.stability.evaluator)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.evaluator.StabilityResult">StabilityResult (class in pyensemblefs.stability.evaluator)</a>
+</li>
+      <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.SubsetFilter">SubsetFilter (class in pyensemblefs.fsmethods)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.SumAggregator">SumAggregator (class in pyensemblefs.aggregators.score)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.evaluator.StabilityResult.summary">summary (pyensemblefs.stability.evaluator.StabilityResult attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.ThresholdAggregator">ThresholdAggregator (class in pyensemblefs.aggregators.subset)</a>
+</li>
+      <li><a href="api/stability.html#pyensemblefs.stability.helpers.to_coo_if_needed">to_coo_if_needed() (in module pyensemblefs.stability.helpers)</a>
+</li>
+      <li><a href="api/viz.html#pyensemblefs.viz.comparison.topk_upset_plot">topk_upset_plot() (in module pyensemblefs.viz.comparison)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.TopKBinaryAggregator">TopKBinaryAggregator (class in pyensemblefs.aggregators.subset)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/estimators.html#pyensemblefs.estimators.base.train_fs_clf_with_different_k_features">train_fs_clf_with_different_k_features() (in module pyensemblefs.estimators.base)</a>
+</li>
+      <li><a href="api/ensemble.html#pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector.transform">transform() (pyensemblefs.ensemble.featureselector.EnsembleFeatureSelector method)</a>
+
+      <ul>
+        <li><a href="api/fsmethods.html#pyensemblefs.fsmethods.FSMethod.transform">(pyensemblefs.fsmethods.FSMethod method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.TrimmedMeanAggregator">TrimmedMeanAggregator (class in pyensemblefs.aggregators.score)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.TrimmedMeanRankAggregator">TrimmedMeanRankAggregator (class in pyensemblefs.aggregators.rank)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stability.html#pyensemblefs.stability.expectations.unadjusted_expectation">unadjusted_expectation() (in module pyensemblefs.stability.expectations)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/stability.html#pyensemblefs.stability.evaluator.StabilityResult.values">values (pyensemblefs.stability.evaluator.StabilityResult attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.subset.WeightedMajorityVoteAggregator">WeightedMajorityVoteAggregator (class in pyensemblefs.aggregators.subset)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.WeightedScoreAggregator">WeightedScoreAggregator (class in pyensemblefs.aggregators.score)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.score.WinsorizedMeanAggregator">WinsorizedMeanAggregator (class in pyensemblefs.aggregators.score)</a>
+</li>
+      <li><a href="api/aggregators.html#pyensemblefs.aggregators.rank.WinsorizedMeanRankAggregator">WinsorizedMeanRankAggregator (class in pyensemblefs.aggregators.rank)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 
 
            </div>

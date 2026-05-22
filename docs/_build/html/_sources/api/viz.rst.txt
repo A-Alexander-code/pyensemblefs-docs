@@ -37,11 +37,8 @@ Example
 
    # Example: visualize top-k feature frequency
    Visualizer.plot_topk_frequency(
-      feature_names=["Feature_1", "Feature_2", "Feature_3", "Feature_4", "Feature_5"],
-      frequencies=[0.95, 0.87, 0.76, 0.65, 0.58],
-      title="Top Features by Selection Frequency",
-      ref_threshold=0.5,
-      annotate=True
+       scores_or_selected,
+       top_k=15
    )
 
 Available methods
