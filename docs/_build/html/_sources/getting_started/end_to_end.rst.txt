@@ -20,15 +20,27 @@ We use a standard classification dataset from ``scikit-learn``:
 
 .. code-block:: python
 
-   import numpy as np
-   import pandas as pd
-   from sklearn.datasets import load_breast_cancer
+    from sklearn.datasets import load_breast_cancer
+    from sklearn.feature_selection import SelectKBest, f_classif
+    from pyensemblefs.ensemble.bootstrapper import Bootstrapper
+    from pyensemblefs.aggregators.score import MeanAggregator
 
-   data = load_breast_cancer(as_frame=True)
-   X = data.data
-   y = data.target
+    # Load a dataset
+    X, y = load_breast_cancer(return_X_y=True)
 
-   print(X.shape, y.shape)
+    # Create a base feature selector
+    base_selector = SelectKBest(score_func=f_classif, k=10)
+
+    # Create and fit a bootstrapper with the selector
+    bootstrapper = Bootstrapper(base_selector, n_bootstraps=10, n_jobs=1, random_state=42)
+    bootstrapper.fit(X, y)
+
+    # Create an aggregator to process the bootstrap results
+    aggregator = MeanAggregator().fit(bootstrapper.results_)
+
+    # Inspect the selected features
+    print("Selected features (ranking):", aggregator.final_ranking_[:10])
+    print("Feature scores:", aggregator.scores_)
 
 
 Step 2 – Bootstrap resampling + feature selection
