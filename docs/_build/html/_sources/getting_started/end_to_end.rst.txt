@@ -25,7 +25,7 @@ We use a standard classification dataset from ``scikit-learn``:
     from pyensemblefs.ensemble.bootstrapper import Bootstrapper
     from pyensemblefs.aggregators.score import MeanAggregator
 
-    # Load a dataset
+    # Load a dataset 
     X, y = load_breast_cancer(return_X_y=True)
 
     # Create a base feature selector
@@ -41,6 +41,7 @@ We use a standard classification dataset from ``scikit-learn``:
     # Inspect the selected features
     print("Selected features (ranking):", aggregator.final_ranking_[:10])
     print("Feature scores:", aggregator.scores_)
+    
 
 
 Step 2 – Bootstrap resampling + feature selection
