@@ -16,7 +16,7 @@ Features at a glance
 - **Homogeneous and heterogeneous ensembles** of feature selectors  
 - **Bootstrap-based resampling** with deterministic scheduling strategies  
 - **Ranking-, score-, and subset-based aggregation methods**  
-- **Twelve stability metrics** (corrected, uncorrected, adjusted)  
+- **Twelve supported stability metrics** (uncorrected, chance-corrected, adjusted)  
 - **Parallel multiprocessing** for large-scale experiments  
 - **Visualization tools** for frequency, ranking, overlap, and stability patterns  
 - **scikit-learn–compatible API** for integration with existing ML pipelines  

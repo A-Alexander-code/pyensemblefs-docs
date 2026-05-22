@@ -16,6 +16,20 @@ Example
 
 .. code-block:: python
 
-   from pyensemblefs.ensemble.featureselector import FeatureSelector
-   selector = FeatureSelector(method="variance", k=10)
+   from pyensemblefs.ensemble.featureselector import EnsembleFeatureSelector
+   from pyensemblefs.ensemble.bootstrapper import Bootstrapper
+   from pyensemblefs.aggregators.rank import MeanRankAggregator
+   from pyensemblefs.fsmethods.factory import get_fs_method
+
+   # Create the feature selection method
+   fs_method = get_fs_method("variance")
+
+   # Create the bootstrapper
+   bootstrapper = Bootstrapper(fsmethod=fs_method, n_bootstraps=10)
+
+   # Create the aggregator
+   aggregator = MeanRankAggregator()
+
+   # Create the selector
+   selector = EnsembleFeatureSelector(bootstrapper=bootstrapper, aggregator=aggregator, k=10)
    selector.fit(X, y)

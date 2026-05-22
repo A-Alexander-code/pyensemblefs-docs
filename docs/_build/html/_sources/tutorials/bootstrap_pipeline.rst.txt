@@ -17,8 +17,21 @@ Example
 .. code-block:: python
 
    from pyensemblefs.ensemble.bootstrapper import Bootstrapper
+   from pyensemblefs.fsmethods.rank import RankingFilter
+   from pyensemblefs.aggregators.score import MeanAggregator
 
-   boot = Bootstrapper(method="variance", n_bootstraps=50)
-   results = boot.run(X, y)
+   # Create feature selection method instance
+   fsmethod = RankingFilter(scorer='variance')
 
-   aggregated = boot.aggregate(results)
+   # Create the bootstrapper
+   boot = Bootstrapper(fsmethod=fsmethod, n_bootstraps=50)
+
+   # Run the bootstrapping process
+   boot.fit(X, y)
+
+   # Create aggregator and compute ensemble results
+   aggregator = MeanAggregator(top_k=10)  # Mean of scores - Select top 10 features
+   aggregated = boot.aggregate(aggregator)
+
+   # Access the results
+   print(aggregated.selected_features_)

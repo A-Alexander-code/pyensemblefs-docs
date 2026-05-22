@@ -39,7 +39,8 @@ and stability assessment, depending on selector type.
 +-----------------+-------------------------+-----------------------------------+--------------------------------------+ 
 | Ranking         | RankingFilter,         | - Mean / median rank              | - Yu (top-k)                         |
 |                 | RankedSubsetFilter,    | - Borda from ranks                | - Zucknick (top-k)                   |
-|                 | score-based wrappers   | - Rank product / geometric rank   | - Sechidis-type (similarity-based)   |
+|                 | score-based wrappers   | - Rank product / geometric rank   | - Top-k subset conversion +          |
+|                 |                         |                                   |   Jaccard / Dice / Nogueira          |
 +-----------------+-------------------------+-----------------------------------+--------------------------------------+
 | Score           | ScoreFilter,           | - Mean / median score             | Use subset metrics after             |
 |                 | model-based importances| - Trimmed / winsorized mean       | thresholding or top-k selection      |

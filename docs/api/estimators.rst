@@ -94,29 +94,41 @@ stability analysis:
 
    import pandas as pd
    import numpy as np
-   from pyensemblefs.ensemble.featureselector import FeatureSelector
-   from pyensemblefs.estimators.base import train_fs_clf_with_different_k_features
+   from pyensemblefs.datasets import load_breast_cancer_dataset
+   from pyensemblefs.fsmethods.factory import get_fs_method
+   from pyensemblefs.ensemble.bootstrapper import Bootstrapper
+   from pyensemblefs.aggregators.rank import MeanRankAggregator
+   from pyensemblefs.ensemble.featureselector import EnsembleFeatureSelector
 
    # Load data
-   X = pd.DataFrame(...)
-   y = np.array(...)
+   df = load_breast_cancer_dataset()
+   X = df.drop(columns=["target"])
+   y = df["target"]
 
-   # Feature selection
-   fs = FeatureSelector(method="variance", k=20)
-   fs.fit(X, y)
-   df_selected, df_scores = fs.extract_features()
+   # Create the feature selection pipeline manually
+   # 1. Create a base selector
+   base_selector = get_fs_method("variance")
 
-   # Evaluate classifier performance across k=1...p
-   metrics, ranked_scores = train_fs_clf_with_different_k_features(
-       df_features=X,
-       y_label=y,
-       fs_method_name="variance",
-       bbdd_name="my_data",
-       estimator_name="dt",
-       scoring_estimator="roc_auc"
+   # 2. Create bootstrapper with the selector
+   bootstrapper = Bootstrapper(fs_method=base_selector, n_bootstraps=50)
+
+   # 3. Create aggregator (concrete implementation)
+   aggregator = MeanRankAggregator()
+
+   # 4. Combine them with EnsembleFeatureSelector
+   ensemble_fs = EnsembleFeatureSelector(
+      bootstrapper=bootstrapper,
+      aggregator=aggregator,
+      k=20  # Select top 20 features
    )
 
-   print(metrics[:5])
+   # Fit and transform
+   ensemble_fs.fit(X, y)
+   X_selected = ensemble_fs.transform(X)
+
+   print(f"Original shape: {X.shape}")
+   print(f"Selected shape: {X_selected.shape}")
+   print(f"Selected features: {X_selected.columns.tolist()}")
 
 API Reference
 -------------

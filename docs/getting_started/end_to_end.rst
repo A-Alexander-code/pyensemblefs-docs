@@ -92,8 +92,8 @@ using the stability utilities.
 
    # bootstrap_supports has shape (B, p), values in {0,1}
    evaluator = StabilityEvaluator(
-       metrics="all12",   # Jaccard, Dice, Ochiai, Hamming, Novovicova, Davis,
-                          # Lustgarten, Phi, Kappa, Nogueira, Yu, Zucknick
+       metrics="all12",   # jaccard, dice, ochiai, hamming, novovicova, davis,
+                          # lustgarten, phi, kappa, nogueira, yu, zucknick
        mode="subset",
    )
 
@@ -115,11 +115,22 @@ feature is selected.
 .. code-block:: python
 
    from pyensemblefs.viz.visualizer import Visualizer
+   import numpy as np
+
+   # Get the indices for the top-20 features first
+   top_k = 20
+   top_indices = np.argsort(selection_frequency)[-top_k:][::-1]
+
+   # Create generic feature names when the input is a NumPy array
+   feature_names = [f"Feature {i}" for i in range(selection_frequency.shape[0])]
+
+   # Keep only the top-20 features and their frequencies
+   top_feature_names = [feature_names[i] for i in top_indices]
+   top_frequencies = selection_frequency[top_indices]
 
    Visualizer.plot_topk_frequency(
-       selection_frequency,
-       feature_names=X.columns,
-       top_k=20,
+       feature_names=top_feature_names,
+       frequencies=top_frequencies,
        title="Top-20 selection frequencies across bootstraps"
    )
 

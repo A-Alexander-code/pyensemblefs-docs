@@ -16,5 +16,10 @@ Example
 
 .. code-block:: python
 
-   from pyensemblefs.viz.visualizer import plot_rankings
-   plot_rankings(ranking_scores)
+   from pyensemblefs.viz.visualizer import Visualizer
+
+   Visualizer.plot_topk_frequency(
+       feature_names=top_feature_names,
+       frequencies=top_frequencies,
+       title="Top-k selection frequency"
+   )
