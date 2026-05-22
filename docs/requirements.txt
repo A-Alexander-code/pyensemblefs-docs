@@ -1,7 +1,7 @@
 --extra-index-url https://test.pypi.org/simple/
 
 # Library under documentation
-pyensemblefs==0.3.13
+pyensemblefs==0.3.14
 
 # Sphinx & extensions
 sphinx
