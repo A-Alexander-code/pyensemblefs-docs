@@ -78,7 +78,7 @@ To verify that the package and its internal modules load correctly:
 
 .. code-block:: python
 
-   from sklearn.datasets import load_breast_cancer
+  from sklearn.datasets import load_breast_cancer
   from pyensemblefs.fsmethods.rank import RankingFilter
 
   X, y = load_breast_cancer(return_X_y=True)
