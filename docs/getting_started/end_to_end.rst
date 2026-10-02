@@ -89,12 +89,16 @@ using the stability utilities.
 .. code-block:: python
 
    from pyensemblefs.stability.evaluator import StabilityEvaluator
+   from pyensemblefs.stability.helpers import build_similarity
 
    # bootstrap_supports has shape (B, p), values in {0,1}
    evaluator = StabilityEvaluator(
        metrics="all12",   # jaccard, dice, ochiai, hamming, novovicova, davis,
                           # lustgarten, phi, kappa, nogueira, yu, zucknick
        mode="subset",
+       sim_matrix=build_similarity(X.to_numpy(), mode="abs-corr"),
+       feature_names=X.columns, threshold=0.7,
+       correction_for_chance={"yu": "estimate"}, N=1000, seed=42,
    )
 
    result = evaluator.compute(bootstrap_supports)
@@ -103,7 +107,7 @@ using the stability utilities.
    for name, value in result.values.items():
        print(f"  {name:10s}: {value:.4f}")
 
-   print("Summary stability (mean over metrics):", result.summary)
+   print("Yu execution metadata:", result.metadata["yu"])
 
 
 Step 5 – Visualize selection frequencies

@@ -1,12 +1,10 @@
 # -- Project info
 project = "pyensemblefs"
 author = "pyensemblefs contributors"
-release = "0.1.0"
+release = "0.4.1"
 html_title = "pyensemblefs — Ensemble Feature Selection for Python"
 
-# -- Path setup: src/ layout
-import os, sys
-sys.path.insert(0, os.path.abspath("../src"))
+# This documentation repository uses the distribution in requirements.txt.
 
 # -- Extensions
 extensions = [
@@ -23,6 +21,7 @@ extensions = [
 
 autodoc_default_options = {"members": True, "undoc-members": True, "show-inheritance": True}
 autodoc_typehints = "description"
+autosectionlabel_prefix_document = True
 napoleon_google_docstring = True
 napoleon_numpy_docstring = True
 
@@ -43,24 +42,5 @@ intersphinx_mapping = {
 
 myst_enable_extensions = ["colon_fence", "deflist", "fieldlist"]
 
-autodoc_mock_imports = [
-    "pandas", "sklearn", "matplotlib", "upsetplot", "joblib", "seaborn"
-]
-
-# --- Mock heavy/optional deps so autodoc won't fail ---
-autodoc_mock_imports = [
-    "pandas", "sklearn", "matplotlib", "upsetplot", "joblib", "seaborn",
-    # mock interno que falta en su árbol (evita ModuleNotFoundError):
-    "fsmethods.fs_factory",
-]
-
-# --- Aliases para imports absolutos legacy (hasta que los pase a relativos) ---
-import sys, importlib
-_aliases = {
-    "basefs": "fsmethods.basefs",   # para `from basefs import FSMethod`
-}
-for short, full in _aliases.items():
-    try:
-        sys.modules[short] = importlib.import_module(full)
-    except Exception:
-        pass
+# Optional dependency; the installed package supplies its core dependencies.
+autodoc_mock_imports = ["skrebate"]

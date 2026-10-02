@@ -16,6 +16,7 @@ rich visualization tools.
    :caption: Get Started
 
    introduction
+   changes
    getting_started/index
 
 .. toctree::

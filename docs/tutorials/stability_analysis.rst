@@ -94,6 +94,30 @@ implemented in ``pyensemblefs.stability``.
     )
 
     results = evaluator.compute(subset_matrix)
-    print("\nEvaluator summary:")
+    print("\nPer-metric results:")
     for metric, value in results.values.items():
         print(f"  {metric}: {value:.4f}")
+
+Input validation and adjusted metrics
+-------------------------------------
+
+The evaluator requires at least two runs and one feature, with boolean or
+exact 0/1 values. Dense and SciPy sparse support matrices are accepted.
+Rankings must first be converted to binary top-k masks as above.
+
+For Yu/Zucknick, including ``metrics="all12"``, supply similarity and a
+threshold explicitly. Yu also requires explicit chance correction:
+
+.. code-block:: python
+
+    adjusted = StabilityEvaluator(
+        metrics=["yu", "zucknick"], sim_matrix=np.eye(p), threshold=0.7,
+        correction_for_chance={"yu": "estimate"}, N=1000, seed=42,
+    ).compute(subset_matrix)
+    print(adjusted.values)
+    print(adjusted.metadata["yu"])
+
+Here identity similarity deliberately treats distinct features as unrelated.
+Use ``build_similarity(X, mode="abs-corr")`` when correlations should contribute.
+``nan_policy="propagate"`` preserves undefined scores by default. See
+:doc:`../api/stability` for correction, validation and migration contracts.

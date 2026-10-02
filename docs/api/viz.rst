@@ -37,8 +37,8 @@ Example
 
    # Example: visualize top-k feature frequency
    Visualizer.plot_topk_frequency(
-       scores_or_selected,
-       top_k=15
+       feature_names=["age", "weight", "height"],
+       frequencies=[0.9, 0.7, 0.5]
    )
 
 Available methods
@@ -60,6 +60,15 @@ All methods are accessible via:
 
    Visualizer.<method_name>(...)
 
+
+Heatmap customization and exports
+---------------------------------
+
+``stability_heatmap`` and ``compare_aggregators_heatmap`` accept ``title``,
+``font_sizes``, ``max_tick_labels``, ``tick_interval``, ``output_dir``,
+``save_png``, ``save_pdf``, ``dpi`` and ``show``. They return open ``(fig, ax)``
+objects. See :doc:`../tutorials/visualization_tools` for executable examples,
+label density behavior and legacy filename compatibility.
 
 Ranking Visualizations
 ----------------------
@@ -111,7 +120,9 @@ Aggregator Comparison Plots
 Aggregator Comparison Heatmap
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Computes and visualizes agreement among multiple aggregators.
+Displays each aggregator's top-k feature ranks in original column order.
+Columns masked for every aggregator are removed; partially populated columns
+remain. Inputs are per-feature rank vectors with lower values ranking first.
 
 .. autofunction:: pyensemblefs.viz.comparison.compare_aggregators_heatmap
 
@@ -125,7 +136,7 @@ Displays cumulative agreement curves across different methods.
 Pairwise Cumulative Agreement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Matrix quantifying agreement between pairs of ranking or subset selectors.
+Plots cumulative agreement curves for each pair of aggregators.
 
 .. autofunction:: pyensemblefs.viz.comparison.pairwise_cumulative_agreement
 
